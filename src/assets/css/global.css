@@ -7,11 +7,6 @@ body {
     'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
 }
 
-.el-button:hover {
-  background: rgb(11, 162, 154) !important;
-  color: white !important;
-}
-
 a {
   text-decoration: none;
 }

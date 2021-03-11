@@ -11,7 +11,7 @@
     </div>
     <div class="slideshow">
       <el-carousel
-        height="400px"
+        height="395px"
         direction="vertical"
         :autoplay="true"
         :loop="true"

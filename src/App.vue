@@ -37,7 +37,9 @@
               src="@/assets/img/logo.png"
             />
             <div class="copyright">
-              Copyright © 2019-2021 郑人滏. 保留所有代码权利
+              Copyright © 2019-2021 郑人滏. 保留代码权利<br/>
+              GitHub: <a style="color: #8a8484" href="https://github.com/kong-sa">https://github.com/kong-sa</a>
+               | 博客园: <a style="color: #8a8484" href="https://www.cnblogs.com/kongsam/">https://www.cnblogs.com/kongsam/</a>
             </div>
           </div>
         </div>
@@ -144,7 +146,7 @@ export default {
 
 .copyright {
   margin-top: 10px;
-  font-size: 14px;
+  font-size: 16px;
   color: #8a8484;
 }
 

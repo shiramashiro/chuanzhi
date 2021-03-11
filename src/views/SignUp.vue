@@ -1,11 +1,5 @@
 <template>
-  <div class="signup">
-    <el-form>
-      <el-form-item label="邮箱">
-        <el-input size="mini"></el-input>
-      </el-form-item>
-    </el-form>
-  </div>
+  <div class="signup">登陆</div>
 </template>
 
 <script>
@@ -17,8 +11,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.signup {
-  padding: 1% 15%;
-}
-</style>
+<style></style>
