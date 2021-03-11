@@ -1,95 +1,62 @@
 <template>
   <div class="signup">
     <div>
-      <h2>新会员注册</h2>
+      <h2>会员登录</h2>
     </div>
-    <el-form
-      class="form"
-      :rules="formRules"
-      ref="form"
-      :model="form"
-      :hide-required-asterisk="true"
-      label-width="100px"
-    >
-      <el-form-item class="form-item" label="会员邮箱：" prop="email">
-        <el-input v-model="form.email" size="mini"></el-input>
-      </el-form-item>
-      <el-form-item class="form-item" label="会员名：" prop="username">
-        <el-input v-model="form.username" size="mini"></el-input>
-      </el-form-item>
-      <el-form-item class="form-item" label="密码：" prop="password">
-        <el-input
-          v-model="form.password"
-          size="mini"
-          type="password"
-          show-password
-        ></el-input>
-      </el-form-item>
-      <el-form-item class="form-item" label="重复密码：" prop="rePassword">
-        <el-input
-          v-model="form.rePassword"
-          size="mini"
-          type="password"
-          show-password
-        ></el-input>
-      </el-form-item>
-      <el-form-item class="form-item" label="性别：" prop="sex">
-        <el-radio-group v-model="form.sex">
-          <el-radio label="男">男</el-radio>
-          <el-radio label="女">女</el-radio>
-        </el-radio-group>
-      </el-form-item>
-      <el-form-item class="form-item" label="联系电话：" prop="phone">
-        <el-input v-model="form.phone" size="mini"></el-input>
-      </el-form-item>
-      <el-form-item class="form-item" label="个人简介：" prop="profile">
-        <el-input
-          v-model="form.profile"
-          size="mini"
-          type="textarea"
-          :rows="3"
-          maxlength="50"
-          show-word-limit
-        ></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button @click="submit"
-          >同意并注册<i class="el-icon-check el-icon--right"></i
-        ></el-button>
-      </el-form-item>
-    </el-form>
-    <div class="tips">
-      <router-link style="color: #b5b5b5;" to="/signup"
-        >已有账号？点击登陆</router-link
-      >
+    <div class="wrapper">
+      <div class="img-container">
+        <img src="@/assets/img/myad.jpg" />
+      </div>
+      <div class="form-container">
+        <el-form
+          class="form"
+          :rules="formRules"
+          ref="form"
+          :model="form"
+          :hide-required-asterisk="true"
+          label-width="100px"
+        >
+          <el-form-item label="会员名：" prop="username">
+            <el-input size="mini" v-model="form.username"></el-input>
+          </el-form-item>
+          <el-form-item label="密码：" prop="password">
+            <el-input
+              size="mini"
+              v-model="form.password"
+              type="password"
+            ></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button @click="submit">登录</el-button>
+          </el-form-item>
+          <div class="tips">
+            <router-link to="/signup" style="color: #b5b5b5;"
+              >没有账号？点击注册</router-link
+            >
+          </div>
+        </el-form>
+      </div>
     </div>
+    <Vcode :show="isShow" @success="success" @close="close" />
   </div>
 </template>
 
 <script>
+import Vcode from 'vue-puzzle-vcode'
+
 export default {
-  name: 'SignIn',
+  name: 'SignUp',
+  components: {
+    Vcode
+  },
   data() {
     return {
+      isShow: false,
       form: {
-        email: '',
         username: '',
-        password: '',
-        rePassword: '',
-        sex: '男',
-        phone: '',
-        profile: ''
+        password: ''
       },
       formRules: {
-        email: [
-          { required: true, message: '请输入您的会员邮箱！', trigger: 'blur' },
-          {
-            min: 10,
-            max: 100,
-            message: '长度至少是 10 个字符',
-            trigger: 'blur'
-          }
-        ],
         username: [
           { required: true, message: '请输入您的会员名！', trigger: 'blur' },
           { min: 4, max: 15, message: '长度在 4 到 15 之间', trigger: 'blur' }
@@ -97,23 +64,6 @@ export default {
         password: [
           { required: true, message: '请输入您的密码！', trigger: 'blur' },
           { min: 6, max: 20, message: '长度在 6 到 20 之间', trigger: 'blur' }
-        ],
-        rePassword: [
-          { required: true, message: '请重复您的密码！', trigger: 'blur' },
-          { min: 6, max: 20, message: '长度在 6 到 20 之间', trigger: 'blur' }
-        ],
-        phone: [
-          { required: true, message: '请重复您的联系电话！', trigger: 'blur' },
-          {
-            min: 11,
-            max: 11,
-            message: '电话号码必须是 11 位数',
-            trigger: 'blur'
-          }
-        ],
-        sex: [{ required: true, message: '请选择性别！', trigger: 'change' }],
-        profile: [
-          { required: true, message: '请填写个人简介！', trigger: 'blur' }
         ]
       }
     }
@@ -121,9 +71,25 @@ export default {
   methods: {
     submit() {
       this.$refs.form.validate(valida => {
-        if (!valida) return false
-        console.log('s')
+        if (!valida) {
+          return false
+        } else {
+          this.isShow = true
+        }
       })
+    },
+    success(time) {
+      this.isShow = false
+      this.$message({
+        type: 'success',
+        duration: 2000,
+        message: '验证通过使用' + Math.floor(Number(time) * 100) / 100 + 's'
+      })
+      // 验证通过，发起异步请求
+      console.log('发起了登录请求')
+    },
+    close() {
+      this.isShow = false
     }
   }
 }
@@ -133,14 +99,25 @@ export default {
 .signup {
   padding: 1% 15%;
 
-  .form {
-    padding: 0 20%;
-  }
+  .wrapper {
+    justify-content: normal !important;
 
-  .tips {
-    text-align: center;
-    font-size: 13px;
-    margin-top: 60px;
+    .form-container {
+      width: 100%;
+      display: block;
+      &:before {
+        content: ' ';
+        display: inline-block;
+        vertical-align: middle;
+        height: 26%;
+      }
+
+      .tips {
+        text-align: center;
+        font-size: 13px;
+        margin-top: 60px;
+      }
+    }
   }
 }
 </style>

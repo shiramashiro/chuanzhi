@@ -27,7 +27,7 @@
           </a>
         </li>
         <li class="li" v-if="notlogin">
-          <router-link to="/signup">
+          <router-link to="/signin">
             <span class="li-inner-item">
               <i class="el-icon-s-custom"></i>登陆 \ 注册
             </span>

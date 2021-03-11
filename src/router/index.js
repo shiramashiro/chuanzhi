@@ -16,12 +16,12 @@ const routes = [
   {
     path: '/signin',
     component: SignIn,
-    meta: { title: '传智书城 - 注册' }
+    meta: { title: '传智书城 - 登陆' }
   },
   {
     path: '/signup',
     component: SignUp,
-    meta: { title: '传智书城 - 登陆' }
+    meta: { title: '传智书城 - 注册' }
   }
 ]
 
