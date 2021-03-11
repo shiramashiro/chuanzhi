@@ -5,7 +5,7 @@ import store from './store'
 
 // css from assets folder
 import './assets/css/global.css'
-import './assets/iconfont/iconfont.css'
+import './assets/icon/iconfont.css'
 
 // element-ui
 import 'element-ui/lib/theme-chalk/index.css'

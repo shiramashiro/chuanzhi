@@ -58,6 +58,11 @@
         ></el-button>
       </el-form-item>
     </el-form>
+    <div class="tips">
+      <router-link style="color: #b5b5b5;" to="/signup"
+        >已有账号？点击登陆</router-link
+      >
+    </div>
   </div>
 </template>
 
@@ -130,6 +135,12 @@ export default {
 
   .form {
     padding: 0 20%;
+  }
+
+  .tips {
+    text-align: center;
+    font-size: 13px;
+    margin-top: 60px;
   }
 }
 </style>

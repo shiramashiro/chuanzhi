@@ -24,9 +24,9 @@
               <div class="title">{{ listItem.type }}</div>
               <div class="label-container">
                 <div class="label" v-for="(item, i) in listItem.items" :key="i">
-                  <a class="label-a" v-bind:href="item.href">
+                  <el-link class="label-a" v-bind:href="item.href">
                     {{ item.label }}
-                  </a>
+                  </el-link>
                 </div>
               </div>
             </div>
@@ -37,9 +37,15 @@
               src="@/assets/img/logo.png"
             />
             <div class="copyright">
-              Copyright © 2019-2021 郑人滏. 保留代码权利<br/>
-              GitHub: <a style="color: #8a8484" href="https://github.com/kong-sa">https://github.com/kong-sa</a>
-               | 博客园: <a style="color: #8a8484" href="https://www.cnblogs.com/kongsam/">https://www.cnblogs.com/kongsam/</a>
+              Copyright © 2019-2021 郑人滏. 保留代码权利<br />
+              GitHub:
+              <el-link type="info" href="https://github.com/kong-sa"
+                >https://github.com/kong-sa</el-link
+              >
+              | 博客园:
+              <el-link type="info" href="https://www.cnblogs.com/kongsam/"
+                >https://www.cnblogs.com/kongsam/</el-link
+              >
             </div>
           </div>
         </div>
@@ -165,8 +171,6 @@ export default {
 
 .label-a {
   margin-right: 10px;
-  font-size: 13px;
-  color: #333;
 }
 
 .label-container {

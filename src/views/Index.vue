@@ -34,7 +34,7 @@
             具体开放时间请留意公告，感谢大家的支持与理解，祝大家购物愉快！<br />
           </div>
           <div style="float: right; margin-top: 10px">
-            3月23日<br />传智播客 传智书城系统管理部
+            3月10日<br />传智播客 传智书城系统管理部
           </div>
         </div>
       </div>
@@ -46,7 +46,14 @@
           <ul class="right-ul">
             <li class="right-li" v-for="(item, index) in hotBooks" :key="index">
               <a v-bind:href="item.href">
-                <img v-bind:src="item.imgUrl" />
+                <el-tooltip
+                  class="item"
+                  effect="dark"
+                  :content="item.name"
+                  placement="top"
+                >
+                  <img v-bind:src="item.imgUrl" />
+                </el-tooltip>
               </a>
             </li>
           </ul>
@@ -134,15 +141,18 @@ export default {
       hotBooks: [
         {
           imgUrl: require('../assets/img/105.jpg'),
-          href: '#'
+          href: '#',
+          name: '培育男孩'
         },
         {
           imgUrl: require('../assets/img/dulala.jpg'),
-          href: '#'
+          href: '#',
+          name: '杜拉拉升职记'
         },
         {
           imgUrl: require('../assets/img/106.jpg'),
-          href: '#'
+          href: '#',
+          name: '别做正常的傻瓜'
         }
       ]
     }
