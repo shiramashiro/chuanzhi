@@ -2,11 +2,11 @@
   <div id="app">
     <el-container>
       <!-- 头部区域，所有的页面都会有头部组件 -->
-      <el-header style="padding: 0 10%; height: 100%">
-        <navbar></navbar>
+      <el-header style="height: 100%; padding: 0">
+        <top></top>
       </el-header>
       <!-- 身体区域，根据需要切换组件 -->
-      <el-main class="main" style="padding: 0">
+      <el-main class="main" style="padding: 1% 15%;">
         <router-view />
       </el-main>
       <!-- 底部区域，所有的页面都会有底部组件 -->
@@ -14,24 +14,28 @@
         class="footer"
         style="margin-top: 20px; background: rgb(249, 249, 249); padding: 1% 15%; height: 100%"
       >
-        <div class="footer-container">
-          <div class="wrapper">
+        <div class="footer-wrapper">
+          <div class="footer-top">
             <div
               class="item"
               v-for="(listItem, index) in bottomList"
               :key="index"
             >
               <div class="title">{{ listItem.type }}</div>
-              <div class="label-container">
-                <div class="label" v-for="(item, i) in listItem.items" :key="i">
-                  <el-link class="label-a" v-bind:href="item.href">
+              <div class="label">
+                <div
+                  class="label-item"
+                  v-for="(item, i) in listItem.items"
+                  :key="i"
+                >
+                  <el-link class="router" v-bind:href="item.href">
                     {{ item.label }}
                   </el-link>
                 </div>
               </div>
             </div>
           </div>
-          <div class="bottom">
+          <div class="footer-bottom">
             <img
               style="width: 100px; height: 30px"
               src="@/assets/img/logo.png"
@@ -55,10 +59,10 @@
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue'
+import Top from '@/components/Top.vue'
 
 export default {
-  components: { Navbar },
+  components: { Top },
   data() {
     return {
       bottomList: [
@@ -136,15 +140,15 @@ export default {
 }
 </script>
 
-<style>
-.wrapper {
+<style lang="css" scoped>
+.footer-top {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin: 20px 0 20px 0;
 }
 
-.bottom {
+.footer-bottom {
   width: 100%;
   height: 100%;
   text-align: center;
@@ -169,11 +173,11 @@ export default {
   margin-right: 0;
 }
 
-.label-a {
+.router {
   margin-right: 10px;
 }
 
-.label-container {
+.label {
   display: flex;
 }
 </style>

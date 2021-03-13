@@ -15,8 +15,25 @@ import Element, { Message, MessageBox } from 'element-ui'
 // axios
 import axios from 'axios'
 
-Vue.use(Element)
+// axios.interceptors.request.use(
+//   function(config) {
+//     return config
+//   },
+//   function(error) {
+//     return Promise.reject(error)
+//   }
+// )
 
+// axios.interceptors.response.use(
+//   function(response) {
+//     return response
+//   },
+//   function(error) {
+//     return Promise.reject(error)
+//   }
+// )
+
+Vue.use(Element)
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm
 Vue.prototype.$http = axios

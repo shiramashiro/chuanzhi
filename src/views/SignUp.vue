@@ -131,8 +131,6 @@ export default {
 
 <style lang="scss" scoped>
 .signup {
-  padding: 1% 15%;
-
   .form {
     padding: 0 20%;
   }

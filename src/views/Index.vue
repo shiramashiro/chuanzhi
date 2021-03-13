@@ -1,14 +1,5 @@
 <template>
   <div class="index">
-    <div class="navbar">
-      <ul class="ul">
-        <li class="li" v-for="(item, index) in navbarItems" :key="index">
-          <a class="a" v-bind:href="item.href" v-if="item.href !== ''">
-            {{ item.label }}
-          </a>
-        </li>
-      </ul>
-    </div>
     <div class="slideshow">
       <el-carousel
         height="395px"
@@ -76,82 +67,20 @@ export default {
         'http://oss.norza.cn/imgs/javaweb/index/index_ad06.jpg',
         'http://oss.norza.cn/imgs/javaweb/index/index_ad07.jpg'
       ],
-      navbarItems: [
-        {
-          label: '文学',
-          href: '#'
-        },
-        {
-          label: '生活',
-          href: '#'
-        },
-        {
-          label: '计算机',
-          href: '#'
-        },
-        {
-          label: '外语',
-          href: '#'
-        },
-        {
-          label: '经营',
-          href: '#'
-        },
-        {
-          label: '励志',
-          href: '#'
-        },
-        {
-          label: '社科',
-          href: '#'
-        },
-        {
-          label: '学术',
-          href: '#'
-        },
-        {
-          label: '少儿',
-          href: '#'
-        },
-        {
-          label: '艺术',
-          href: '#'
-        },
-        {
-          label: '原版',
-          href: '#'
-        },
-        {
-          label: '科技',
-          href: '#'
-        },
-        {
-          label: '考试',
-          href: '#'
-        },
-        {
-          label: '生活百科',
-          href: '#'
-        },
-        {
-          label: '全部商品',
-          href: '#'
-        }
-      ],
       hotBooks: [
         {
           imgUrl: require('../assets/img/105.jpg'),
-          href: '#',
+          href: '/book/details/1',
           name: '培育男孩'
         },
         {
           imgUrl: require('../assets/img/dulala.jpg'),
-          href: '#',
+          href: '/book/details/2',
           name: '杜拉拉升职记'
         },
         {
           imgUrl: require('../assets/img/106.jpg'),
-          href: '#',
+          href: '/book/details/3',
           name: '别做正常的傻瓜'
         }
       ]
@@ -163,41 +92,10 @@ export default {
 <style lang="scss" scoped>
 .index {
   .slideshow {
-    padding: 0 15%;
-  }
-
-  .navbar {
-    background: rgb(11, 162, 154);
-    margin: 25px 0;
-    padding: 10px 15%;
-
-    .ul {
-      margin: 0;
-      list-style: none;
-      display: flex;
-      padding: 0;
-      justify-content: space-between;
-
-      .li {
-        margin: 0 10px;
-        a {
-          color: white;
-          font-size: 17px;
-        }
-      }
-
-      .li:first-child {
-        margin: 0 10px 0 0;
-      }
-
-      .li:last-child {
-        margin: 0 0 0 10px;
-      }
-    }
+    margin-bottom: 20px;
   }
 
   .notice {
-    padding: 20px 15%;
     display: flex;
 
     .left {
@@ -227,7 +125,7 @@ export default {
       }
 
       .left-text {
-        margin-top: 10px;
+        margin-top: 20px;
       }
     }
 
@@ -237,7 +135,7 @@ export default {
 
       .right-ul {
         display: flex;
-        margin: 10px 0 0 0;
+        margin: 20px 0 0 0;
         height: 170px;
         flex-direction: row;
         justify-content: space-between;

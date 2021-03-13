@@ -43,6 +43,7 @@
 
 <script>
 import Vcode from 'vue-puzzle-vcode'
+import { login } from '@/api/login.js'
 
 export default {
   name: 'SignUp',
@@ -85,8 +86,10 @@ export default {
         duration: 2000,
         message: '验证通过使用' + Math.floor(Number(time) * 100) / 100 + 's'
       })
-      // 验证通过，发起异步请求
-      console.log('发起了登录请求')
+      // 编写登陆页面逻辑层
+      console.log('发起了异步请求！')
+      let res = login(this.form.username, this.form.password)
+      console.log(res)
     },
     close() {
       this.isShow = false
@@ -97,14 +100,13 @@ export default {
 
 <style lang="scss" scoped>
 .signup {
-  padding: 1% 15%;
-
   .wrapper {
     justify-content: normal !important;
 
     .form-container {
       width: 100%;
       display: block;
+
       &:before {
         content: ' ';
         display: inline-block;

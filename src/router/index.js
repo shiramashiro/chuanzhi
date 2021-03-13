@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import Index from '@/views/Index.vue'
 import SignIn from '@/views/SignIn.vue'
 import SignUp from '@/views/SignUp.vue'
+import BookDetails from '@/components/BookDetails.vue'
 
 Vue.use(VueRouter)
 
@@ -22,6 +23,11 @@ const routes = [
     path: '/signup',
     component: SignUp,
     meta: { title: '传智书城 - 注册' }
+  },
+  {
+    path: '/book/details/:bookId',
+    component: BookDetails,
+    meta: { title: '传智书城 - 书籍详细' }
   }
 ]
 
