@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 import Index from '@/views/Index.vue'
 import SignIn from '@/views/SignIn.vue'
 import SignUp from '@/views/SignUp.vue'
-import BookDetails from '@/components/BookDetails.vue'
+import BookDetails from '@/views/BookDetails.vue'
 
 Vue.use(VueRouter)
 
