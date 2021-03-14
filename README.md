@@ -1,17 +1,32 @@
-# 项目说明
+# Git 基本指令
 
-2020-2021 年 2 学期《Java Web 程序设计任务教程》演示的前台项目。
+## 创建分支
 
-## 主要页面
+```shell
+git branch [分支名]
+```
 
-1. 项目主页；
-2. 登陆和注册页；
+## 切换分支
+
+```shell
+git checkout [分支名]
+```
+
+## 删除分支
+
+```shell
+git branch -d [分支名]
+```
+
+## 合并分支
+
+```shell
+git merge
+```
 
 # 特性分支说明
 
-特性分支是从开发分支迁出的副本分支，专门用于开发新特性，当特性开发完成后，特性分支中的内容会被合回开发分支。在任何情况下，特性分支存活时间都应该尽可能短，比如，一个人或者一个团队能够在一天时间内结束在特性分支上的开发。一旦特性开发完成并合回开发分支后，特性分支被删掉，防止有人继续向特性分支合入代码。
-
-有关特性分支的说明： [使用特性分支开发](https://wenxinhe.gitbooks.io/knowledge-base/content/shi-yong-te-xing-fen-zhi-kai-fa.html#what-is-feature-branch)
+特性分支是从开发分支迁出的副本分支，专门用于开发新特性，当特性开发完成后，特性分支中的内容会被合回开发分支。有关特性分支的说明： [使用特性分支开发](https://wenxinhe.gitbooks.io/knowledge-base/content/shi-yong-te-xing-fen-zhi-kai-fa.html#what-is-feature-branch)
 
 ## 创建特性分支
 
