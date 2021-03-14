@@ -69,17 +69,17 @@ export default {
       ],
       hotBooks: [
         {
-          imgUrl: require('../assets/img/105.jpg'),
+          imgUrl: require('@/assets/img/105.jpg'),
           href: '/book/details/1',
           name: '培育男孩'
         },
         {
-          imgUrl: require('../assets/img/dulala.jpg'),
+          imgUrl: require('@/assets/img/dulala.jpg'),
           href: '/book/details/2',
           name: '杜拉拉升职记'
         },
         {
-          imgUrl: require('../assets/img/106.jpg'),
+          imgUrl: require('@/assets/img/106.jpg'),
           href: '/book/details/3',
           name: '别做正常的傻瓜'
         }

@@ -11,7 +11,7 @@
           <li class="li">
             <span style="display: flex">
               <el-input
-                style="width: 170px; margin-right: 5px"
+                style="width: 300px; margin-right: 5px"
                 size="mini"
                 v-model="searchValue"
                 placeholder="搜索图书"
@@ -27,6 +27,7 @@
               </span>
             </a>
           </li>
+          <!-- 如果未登录不渲染该块内容 -->
           <li class="li" v-if="notlogin">
             <router-link to="/signin">
               <span class="span">
@@ -34,6 +35,28 @@
               </span>
             </router-link>
           </li>
+          <!-- 用户状态信息保存在vuex中 -->
+          <el-dropdown v-if="!notlogin">
+            <li class="li">
+              <router-link to="user">
+                <span class="span">
+                  <el-avatar :size="25" :src="avatar"></el-avatar>
+                </span>
+              </router-link>
+            </li>
+            <el-dropdown-menu>
+              <template v-for="(item, index) in dropMenuItems">
+                <router-link
+                  :to="item.href"
+                  :key="index"
+                >
+                  <el-dropdown-item>
+                    <i :class="item.style"></i>{{ item.label }}
+                  </el-dropdown-item>
+                </router-link>
+              </template>
+            </el-dropdown-menu>
+          </el-dropdown>
         </ul>
       </div>
     </div>
@@ -53,23 +76,21 @@
 export default {
   data() {
     return {
-      notlogin: true,
+      notlogin: false,
       searchValue: '',
+      avatar: require('@/assets/img/avatar04.jpg'),
       menuItems: [
         {
-          href: '#',
+          href: '/cart',
           label: '购物车',
-          style: 'el-icon-shopping-cart-1'
+          style: 'el-icon-shopping-cart-1',
+          isHaveDropMenu: false
         },
         {
-          href: '#',
+          href: '/help',
           label: '帮助中心',
-          style: 'el-icon-warning-outline'
-        },
-        {
-          href: '#',
-          label: '我的账户',
-          style: 'el-icon-s-finance'
+          style: 'el-icon-warning-outline',
+          isHaveDropMenu: false
         }
       ],
       typeItems: [
@@ -132,6 +153,48 @@ export default {
         {
           label: '全部商品',
           href: '#'
+        }
+      ],
+      dropMenuItems: [
+        {
+          href: '/order',
+          label: '我的订单',
+          style: 'el-icon-s-order'
+        },
+        {
+          href: '/message',
+          label: '我的消息',
+          style: 'el-icon-chat-round'
+        },
+        {
+          href: '/channel',
+          label: '我的频道',
+          style: 'el-icon-bell'
+        },
+        {
+          href: '/account',
+          label: '我的账户',
+          style: 'el-icon-s-finance'
+        },
+        {
+          href: '/vip',
+          label: '会员中心',
+          style: 'el-icon-s-custom'
+        },
+        {
+          href: '/subscriptions',
+          label: '订阅店铺',
+          style: 'el-icon-thumb'
+        },
+        {
+          href: '/collection',
+          label: '收藏',
+          style: 'el-icon-folder-checked'
+        },
+        {
+          href: '/settings',
+          label: '设置',
+          style: 'el-icon-s-operation'
         }
       ]
     }

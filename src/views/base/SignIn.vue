@@ -101,6 +101,7 @@ export default {
 <style lang="scss" scoped>
 .signup {
   .wrapper {
+    display: flex;
     justify-content: normal !important;
 
     .form-container {

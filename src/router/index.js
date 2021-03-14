@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Index from '@/views/Index.vue'
-import SignIn from '@/views/SignIn.vue'
-import SignUp from '@/views/SignUp.vue'
-import BookDetails from '@/views/BookDetails.vue'
+import Cart from '@/views/extend/Cart.vue'
+import Index from '@/views/base/Index.vue'
+import SignIn from '@/views/base/SignIn.vue'
+import SignUp from '@/views/base/SignUp.vue'
+import BookDetails from '@/views/extend/BookDetails.vue'
 
 Vue.use(VueRouter)
 
@@ -28,6 +29,11 @@ const routes = [
     path: '/book/details/:bookId',
     component: BookDetails,
     meta: { title: '传智书城 - 书籍详细' }
+  },
+  {
+    path: '/cart',
+    component: Cart,
+    meta: { title: '传智书城 - 购物车' }
   }
 ]
 
