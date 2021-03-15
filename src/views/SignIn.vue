@@ -100,6 +100,8 @@ export default {
 
 <style lang="scss" scoped>
 .signup {
+  margin: 1% 15%;
+
   .wrapper {
     display: flex;
     justify-content: normal !important;

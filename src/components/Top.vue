@@ -27,7 +27,6 @@
               </span>
             </a>
           </li>
-          <!-- 如果未登录不渲染该块内容 -->
           <li class="li" v-if="notlogin">
             <router-link to="/signin">
               <span class="span">
@@ -35,7 +34,6 @@
               </span>
             </router-link>
           </li>
-          <!-- 用户状态信息保存在vuex中 -->
           <el-dropdown v-if="!notlogin">
             <li class="li">
               <router-link to="user">
@@ -46,10 +44,7 @@
             </li>
             <el-dropdown-menu>
               <template v-for="(item, index) in dropMenuItems">
-                <router-link
-                  :to="item.href"
-                  :key="index"
-                >
+                <router-link :to="item.href" :key="index">
                   <el-dropdown-item>
                     <i :class="item.style"></i>{{ item.label }}
                   </el-dropdown-item>
@@ -59,15 +54,6 @@
           </el-dropdown>
         </ul>
       </div>
-    </div>
-    <div class="navbar-wrapper">
-      <ul class="ul">
-        <li class="li" v-for="(item, index) in typeItems" :key="index">
-          <a v-bind:href="item.href" v-if="item.href !== ''">
-            {{ item.label }}
-          </a>
-        </li>
-      </ul>
     </div>
   </div>
 </template>
@@ -81,7 +67,7 @@ export default {
       avatar: require('@/assets/img/avatar04.jpg'),
       menuItems: [
         {
-          href: '/cart',
+          href: '/trolley',
           label: '购物车',
           style: 'el-icon-shopping-cart-1',
           isHaveDropMenu: false
@@ -91,68 +77,6 @@ export default {
           label: '帮助中心',
           style: 'el-icon-warning-outline',
           isHaveDropMenu: false
-        }
-      ],
-      typeItems: [
-        {
-          label: '文学',
-          href: '#'
-        },
-        {
-          label: '生活',
-          href: '#'
-        },
-        {
-          label: '计算机',
-          href: '#'
-        },
-        {
-          label: '外语',
-          href: '#'
-        },
-        {
-          label: '经营',
-          href: '#'
-        },
-        {
-          label: '励志',
-          href: '#'
-        },
-        {
-          label: '社科',
-          href: '#'
-        },
-        {
-          label: '学术',
-          href: '#'
-        },
-        {
-          label: '少儿',
-          href: '#'
-        },
-        {
-          label: '艺术',
-          href: '#'
-        },
-        {
-          label: '原版',
-          href: '#'
-        },
-        {
-          label: '科技',
-          href: '#'
-        },
-        {
-          label: '考试',
-          href: '#'
-        },
-        {
-          label: '生活百科',
-          href: '#'
-        },
-        {
-          label: '全部商品',
-          href: '#'
         }
       ],
       dropMenuItems: [
@@ -195,11 +119,15 @@ export default {
           href: '/settings',
           label: '设置',
           style: 'el-icon-s-operation'
+        },
+        {
+          href: '/logout',
+          label: '退出',
+          style: 'el-icon-caret-right'
         }
       ]
     }
-  },
-  methods: {}
+  }
 }
 </script>
 
@@ -238,37 +166,6 @@ export default {
           transform: translate(-1px, 0);
           font-weight: 600;
         }
-      }
-    }
-  }
-
-  .navbar-wrapper {
-    background: rgb(11, 162, 154);
-    margin: 25px 0;
-    padding: 10px 15%;
-
-    .ul {
-      margin: 0;
-      list-style: none;
-      display: flex;
-      padding: 0;
-      justify-content: space-between;
-
-      .li {
-        margin: 0 10px;
-
-        a {
-          color: white;
-          font-size: 17px;
-        }
-      }
-
-      .li:first-child {
-        margin: 0 10px 0 0;
-      }
-
-      .li:last-child {
-        margin: 0 0 0 10px;
       }
     }
   }

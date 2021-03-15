@@ -1,12 +1,10 @@
 <template>
   <div class="shipping-wrapper" @click="$emit('choose', currentActiveIndex)">
-    <div class="shipping-address">
-      <div class="shipping-header">
-        {{ address.acceptedName }}
-      </div>
-      <div class="shipping-body">
-        {{ address.acceptedDetails }} {{ address.phone }}
-      </div>
+    <div class="shipping-header">
+      {{ address.acceptedName }}
+    </div>
+    <div class="shipping-body">
+      {{ address.acceptedDetails }} {{ address.phone }}
     </div>
   </div>
 </template>
@@ -25,16 +23,15 @@ export default {
   },
   data() {
     return {}
-  },
-  methods: {}
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-.shipping-address {
+.shipping-wrapper {
   word-break: break-all;
-  width: 237px;
-  height: 105px;
+  width: 237px !important;
+  height: 105px !important;
   padding: 15px;
   border: 5px dashed #666;
   font-size: 16px;
@@ -48,7 +45,7 @@ export default {
   }
 }
 
-.shipping-address:hover {
+.shipping-wrapper:hover {
   cursor: pointer;
   transition: 0.2s;
   border: 5px dashed rgb(11, 162, 154);

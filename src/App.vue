@@ -1,15 +1,12 @@
 <template>
   <div id="app">
     <el-container>
-      <!-- 头部区域，所有的页面都会有头部组件 -->
       <el-header class="header" style="height: 100%; padding: 0">
         <top></top>
       </el-header>
-      <!-- 身体区域，根据需要切换组件 -->
-      <el-main class="main" style="padding: 1% 15%;">
+      <el-main class="main" style="padding: 0">
         <router-view />
       </el-main>
-      <!-- 底部区域，所有的页面都会有底部组件 -->
       <el-footer
         class="footer"
         style="margin-top: 15px; background: rgb(249, 249, 249); padding: 1% 15%; height: 100%"

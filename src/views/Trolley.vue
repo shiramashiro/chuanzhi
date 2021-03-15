@@ -1,12 +1,22 @@
 <template>
   <div class="cart">
-    <breadcrumb v-bind:img="img" v-bind:nav="nav"></breadcrumb>
-    <!-- 根据用户状态信息是否渲染该块内容 -->
+    <div class="bread-crumb">
+      <div class="bread-crumb-wrapper">
+        <el-breadcrumb separator-class="el-icon-arrow-right">
+          <el-breadcrumb-item
+            v-for="(item, index) in breadcrumb"
+            :key="index"
+            :to="item.href"
+            >{{ item.label }}</el-breadcrumb-item
+          >
+        </el-breadcrumb>
+      </div>
+      <el-image style="width: 100%; border-radius: 3px" :src="img"></el-image>
+    </div>
     <div class="notlogin-tip" v-if="notlogin">
       <span class="tip-message">您还没有登陆哟！</span><br />
       <span class="tip-link"><el-link href="/signin">点击登录</el-link></span>
     </div>
-    <!-- 否则渲染 -->
     <div class="cart-wrapper" v-else>
       <el-steps
         :active="nextSetpIndex"
@@ -40,37 +50,36 @@
       </div>
       <div v-else-if="nextSetpIndex === 2" class="settlement">
         <div class="address">
-          <ul>
-            <li v-for="(item, index) in addressItems" :key="index" class="li">
-              <shipping-address
-                @choose="choose($event)"
-                :class="{ active: isActive }"
-                v-bind:currentActiveIndex="index"
-                v-bind:address="item"
-              ></shipping-address>
-            </li>
-          </ul>
+          <template v-for="(item, index) in addressItems">
+            <shipping-address
+              class="li"
+              :key="index"
+              @choose="choose($event)"
+              :class="{ active: isActive }"
+              v-bind:currentActiveIndex="index"
+              v-bind:address="item"
+            ></shipping-address>
+          </template>
         </div>
       </div>
       <div v-else-if="nextSetpIndex === 3" class="identification">3</div>
       <div class="step-button">
-        <el-button size="mini" @click="back">上一步</el-button>
-        <el-button size="mini" @click="next">下一步</el-button>
+        <el-button size="mini" @click="back()">上一步</el-button>
+        <el-button size="mini" @click="next()">下一步</el-button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Breadcrumb from '@/components/Breadcrumb.vue'
 import ShippingAddress from '@/components/ShippingAddress.vue'
 
 export default {
-  components: { Breadcrumb, ShippingAddress },
+  components: { ShippingAddress },
   data() {
     return {
       img: require('@/assets/img/page_ad.jpg'),
-      nav: [
+      breadcrumb: [
         {
           href: '/',
           label: '首页'
@@ -80,7 +89,6 @@ export default {
           label: '购物车'
         }
       ],
-      // 后台给数据，提交订单时将该数组发送给后台保存到数据库中
       tableData: [
         {
           name: 'Java Web程序开发进阶',
@@ -142,6 +150,16 @@ export default {
 
 <style lang="scss" scoped>
 .cart {
+  margin: 1% 15%;
+
+  .bread-crumb {
+    .bread-crumb-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      margin: 0 0 15px 0;
+    }
+  }
+
   .notlogin-tip {
     text-align: center;
     margin: 4% 0;
@@ -163,22 +181,19 @@ export default {
 
     .settlement {
       .address {
-        ul {
-          list-style: none;
-          padding: 0 !important;
-          display: flex;
+        display: flex;
+        flex-direction: row;
 
-          .li {
-            margin-right: 20px;
-          }
+        .li {
+          margin-right: 20px;
+        }
 
-          .li:last-child {
-            margin-right: 0;
-          }
+        .li:last-child {
+          margin-right: 0;
+        }
 
-          .active {
-            border: 5px dashed rgb(11, 162, 154);
-          }
+        .active {
+          border: 5px dashed rgb(11, 162, 154);
         }
       }
     }
