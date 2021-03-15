@@ -1,10 +1,10 @@
 <template>
-  <div class="shipping-wrapper" @click="$emit('choose', currentActiveIndex)">
+  <div class="shipping-wrapper" @click="$emit('choose')">
     <div class="shipping-header">
-      {{ address.acceptedName }}
+      {{ location.acceptedName }}
     </div>
     <div class="shipping-body">
-      {{ address.acceptedDetails }} {{ address.phone }}
+      {{ location.acceptedDetails }} {{ location.phone }}
     </div>
   </div>
 </template>
@@ -12,17 +12,10 @@
 <script>
 export default {
   props: {
-    address: {
+    location: {
       type: Object,
       required: true
-    },
-    currentActiveIndex: {
-      type: Number,
-      required: true
     }
-  },
-  data() {
-    return {}
   }
 }
 </script>

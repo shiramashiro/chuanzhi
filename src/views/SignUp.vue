@@ -53,7 +53,7 @@
         ></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button @click="submit"
+        <el-button @click="submit()"
           >同意并注册<i class="el-icon-check el-icon--right"></i
         ></el-button>
       </el-form-item>
@@ -122,7 +122,7 @@ export default {
     submit() {
       this.$refs.form.validate(valida => {
         if (!valida) return false
-        console.log('s')
+        console.log('提交！')
       })
     }
   }
