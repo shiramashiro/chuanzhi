@@ -4,7 +4,7 @@ import Trolley from '@/views/Trolley.vue'
 import index from '@/views/index.vue'
 import SignIn from '@/views/SignIn.vue'
 import SignUp from '@/views/SignUp.vue'
-import Book from '@/views/Book.vue'
+import book from '@/views/book.vue'
 
 Vue.use(VueRouter)
 
@@ -26,7 +26,7 @@ const routes = [
     },
     {
         path: '/book/:id',
-        component: Book,
+        component: book,
         meta: { title: '传智书城 - 书籍详细' }
     },
     {

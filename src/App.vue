@@ -39,17 +39,24 @@
                     />
                     <div class="copyright">
                         Copyright © 2020-2021 郑人滏. 保留代码权利<br />
-                        GitHub:
+                        我的
                         <el-link
                             type="info"
                             href="https://github.com/shiramashiro"
-                            >https://github.com/shiramashiro</el-link
+                            >GitHub</el-link
                         >
-                        | 博客园:
+                        |
+                        <el-link
+                            type="info"
+                            href="https://gitee.com/shiramashiro"
+                        >
+                            Gitee
+                        </el-link>
+                        |
                         <el-link
                             type="info"
                             href="https://www.cnblogs.com/shiramashiro/"
-                            >https://www.cnblogs.com/shiramashiro</el-link
+                            >博客园</el-link
                         >
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 <template>
-    <div class="small-book" @click="$router.push('/book', [data.id])">
+    <div class="book-card" @click="$router.push('/book/' + data.id)">
         <img class="preview" :src="data.preview" />
         <div class="info">
             <div class="title text-cut">
@@ -17,7 +17,7 @@
 import { stringUtils } from '@/mixin/string-utils.js'
 
 export default {
-    name: 'small-book',
+    name: 'book-card',
     mixins: [stringUtils],
     props: {
         data: {
@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.small-book {
+.book-card {
     width: 150px;
     height: 190px;
     margin: 0 10px;

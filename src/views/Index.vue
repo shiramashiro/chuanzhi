@@ -41,11 +41,11 @@
                 </div>
                 <div class="col-2">
                     <div class="content">
-                        <small-book
+                        <book-card
                             v-for="(item, index) in hotBooks"
                             :data="item"
                             :key="index"
-                        ></small-book>
+                        ></book-card>
                     </div>
                 </div>
             </div>
@@ -67,6 +67,7 @@ export default {
             hotBooks: [
                 {
                     id: 1,
+                    type: 'hot',
                     preview: 'http://img3m0.ddimg.cn/13/17/22722790-1_u_31.jpg',
                     href: '/book/1',
                     title: 'JavaScript权威指南',
@@ -75,6 +76,7 @@ export default {
                 },
                 {
                     id: 2,
+                    type: 'hot',
                     preview: 'http://img3m0.ddimg.cn/80/13/23214590-1_w_9.jpg',
                     href: '/book/2',
                     title: '高性能MySQL',
@@ -83,6 +85,7 @@ export default {
                 },
                 {
                     id: 3,
+                    type: 'hot',
                     preview: 'http://img3m5.ddimg.cn/55/8/28495225-1_w_7.jpg',
                     href: '/book/3',
                     title: '深入理解Java虚拟机',

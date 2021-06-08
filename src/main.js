@@ -7,15 +7,18 @@ import './assets/icon/iconfont.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import 'element-ui/lib/theme-chalk/display.css'
 
-// emelent-ui
+// 导入element-ui组件库
 import Element, { Message, MessageBox } from 'element-ui'
-Vue.use(Element)
+// 注册element-ui到Vue原形中
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm
+Vue.use(Element)
 
-// axios
+// 导入axios
 import axios from 'axios'
+// 注册axios到Vue原形中
 Vue.prototype.$http = axios
+// axios拦截器
 axios.interceptors.request.use(
     function(config) {
         return config
@@ -33,8 +36,13 @@ axios.interceptors.response.use(
     }
 )
 
-import smallBook from '@/components/small-book.vue'
-Vue.component('small-book', smallBook)
+// 导入组件，并全局注册
+import bookCard from '@/components/book-card.vue'
+Vue.component('book-card', bookCard)
+import comment from '@/components/comment.vue'
+Vue.component('comment', comment)
+import tag from '@/components/tag.vue'
+Vue.component('tag', tag)
 
 Vue.config.productionTip = false
 
