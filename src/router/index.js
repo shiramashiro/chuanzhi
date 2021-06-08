@@ -2,8 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Trolley from '@/views/Trolley.vue'
 import index from '@/views/index.vue'
-import SignIn from '@/views/SignIn.vue'
-import SignUp from '@/views/SignUp.vue'
+import signin from '@/views/signin.vue'
+import signup from '@/views/signup.vue'
 import book from '@/views/book.vue'
 
 Vue.use(VueRouter)
@@ -16,12 +16,12 @@ const routes = [
     },
     {
         path: '/signin',
-        component: SignIn,
+        component: signin,
         meta: { title: '传智书城 - 登陆' }
     },
     {
         path: '/signup',
-        component: SignUp,
+        component: signup,
         meta: { title: '传智书城 - 注册' }
     },
     {

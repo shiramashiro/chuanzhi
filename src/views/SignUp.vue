@@ -72,7 +72,7 @@
 
 <script>
 export default {
-    name: 'SignIn',
+    name: 'signup',
     data() {
         return {
             form: {

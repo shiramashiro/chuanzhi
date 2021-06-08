@@ -41,11 +41,11 @@
                 </div>
                 <div class="col-2">
                     <div class="content">
-                        <book-card
+                        <book-fiche
                             v-for="(item, index) in hotBooks"
                             :data="item"
                             :key="index"
-                        ></book-card>
+                        ></book-fiche>
                     </div>
                 </div>
             </div>

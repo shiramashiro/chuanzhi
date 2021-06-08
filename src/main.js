@@ -37,8 +37,8 @@ axios.interceptors.response.use(
 )
 
 // 导入组件，并全局注册
-import bookCard from '@/components/book-card.vue'
-Vue.component('book-card', bookCard)
+import bookFiche from '@/components/book-fiche.vue'
+Vue.component('book-fiche', bookFiche)
 import comment from '@/components/comment.vue'
 Vue.component('comment', comment)
 import tag from '@/components/tag.vue'

@@ -48,7 +48,7 @@
 import Vcode from 'vue-puzzle-vcode'
 
 export default {
-    name: 'SignUp',
+    name: 'signin',
     components: {
         Vcode
     },
