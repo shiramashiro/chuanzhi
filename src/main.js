@@ -1,23 +1,13 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import axios from 'axios'
 import store from './store'
-import './assets/icon/iconfont.css'
+import './static/icon/iconfont.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import 'element-ui/lib/theme-chalk/display.css'
 
-// 导入element-ui组件库
-import Element, { Message, MessageBox } from 'element-ui'
-// 注册element-ui到Vue原形中
-Vue.prototype.$message = Message
-Vue.prototype.$confirm = MessageBox.confirm
-Vue.use(Element)
-
-// 导入axios
-import axios from 'axios'
-// 注册axios到Vue原形中
-Vue.prototype.$http = axios
-// axios拦截器
+axios.defaults.baseURL = 'http://localhost:9000/api/v1'
 axios.interceptors.request.use(
     function(config) {
         return config
@@ -34,6 +24,13 @@ axios.interceptors.response.use(
         return Promise.reject(error)
     }
 )
+Vue.prototype.$axios = axios
+
+// 导入element-ui组件库
+import Element, { Message, MessageBox } from 'element-ui'
+Vue.prototype.$message = Message
+Vue.prototype.$confirm = MessageBox.confirm
+Vue.use(Element)
 
 // 导入组件，并全局注册
 import owlBookFiche from '@/components/owl-book-fiche.vue'

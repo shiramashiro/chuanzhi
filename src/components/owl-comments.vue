@@ -41,6 +41,7 @@
                     <el-button
                         class="owl-margin-rg-lg"
                         type="text"
+                        size="mini"
                         @click="handleClick(item.id, index, 'cai')"
                     >
                         {{ item.cai }}
@@ -48,6 +49,7 @@
                     </el-button>
                     <el-button
                         type="text"
+                        size="mini"
                         @click="handleClick(item.id, index, 'cai')"
                     >
                         {{ item.dianzan }}

@@ -5,7 +5,7 @@
         :class="[mode ? mode : '']"
         @click="$router.push(url)"
     >
-        <img class="preview" :src="data.preview" />
+        <img class="preview" :src="data.previews[0]" />
         <div class="info">
             <div class="title text-cut">
                 {{ data.title }}
@@ -19,11 +19,11 @@
 </template>
 
 <script>
-import { stringUtils } from '@/mixin/string-utils.js'
+import { utils } from '@/mixin/utils/index.js'
 
 export default {
     name: 'owl-book-fiche',
-    mixins: [stringUtils],
+    mixins: [utils],
     props: {
         data: {
             type: Object,

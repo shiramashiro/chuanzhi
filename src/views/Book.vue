@@ -149,17 +149,17 @@
 </template>
 
 <script>
-import { stringUtils } from '@/mixin/string-utils.js'
+import { utils } from '@/mixin/utils/index.js'
 
 export default {
     name: 'book',
-    mixins: [stringUtils],
+    mixins: [utils],
     data() {
         return {
             num: 1,
             bookId: 0,
             selectedAddress: '',
-            location: require('@/assets/json/location.json'),
+            location: require('@/static/json/location.json'),
             tempImgs: [
                 'http://img3m2.ddimg.cn/26/25/29197502-1_u_7.jpg',
                 'http://img3m2.ddimg.cn/26/25/29197502-2_u_8.jpg',

@@ -5,7 +5,7 @@
  * @version 1.0
  * @since 2021年6月8日18:07:26
  */
-export const stringUtils = {
+ export const utils = {
     methods: {
         /**
          * 除了最后一个元素以外，数组中的每一个元素末尾处都拼接一个特定的字符。

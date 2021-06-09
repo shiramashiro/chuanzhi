@@ -36,7 +36,7 @@ const routes = [
         meta: { title: '传智书城 - 购物车' }
     },
     {
-        path: '/category/:type',
+        path: '/category/:types',
         component: category,
         meta: { title: '传智书城 - 分类' }
     }
