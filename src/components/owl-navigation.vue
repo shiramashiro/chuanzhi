@@ -1,9 +1,11 @@
 <template>
-    <div class="navigation">
+    <div class="owl-navigation">
         <div class="menu-wrapper">
             <div class="left">
                 <router-link to="/">
-                    <img src="@/assets/img/logo.png" />
+                    <img
+                        src="https://owl-town.oss-cn-chengdu.aliyuncs.com/img/logo/logo.png"
+                    />
                 </router-link>
             </div>
             <div class="right">
@@ -71,23 +73,18 @@
 
 <script>
 export default {
-    name: 'navigation',
+    name: 'owl-navigation',
     data() {
         return {
             notlogin: false, // 用户登录状态
             searchValue: '',
-            avatar: require('@/assets/img/avatar04.jpg'), // 修改用户信息
+            avatar:
+                'https://owl-town.oss-cn-chengdu.aliyuncs.com/img/head-img%20(3).jpeg', // 修改用户信息
             menuItems: [
                 {
                     href: '/trolley',
                     label: '购物车',
                     style: 'el-icon-shopping-cart-1',
-                    isHaveDropMenu: false
-                },
-                {
-                    href: '/help',
-                    label: '帮助中心',
-                    style: 'el-icon-warning-outline',
                     isHaveDropMenu: false
                 }
             ],
@@ -144,7 +141,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.navigation {
+.owl-navigation {
     .menu-wrapper {
         margin: 1% 0;
         padding: 0 10%;

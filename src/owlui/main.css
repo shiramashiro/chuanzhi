@@ -1,0 +1,330 @@
+/*
+    author：郑人滏（shiramashiro）
+    since：2021年6月9日18:56:32
+    version：1.0
+*/
+
+/* ============================================== */
+/* ================= 基础样式 =================== */
+body {
+    margin: 0 !important;
+    background-color: white;
+}
+
+@font-face {
+    font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+        'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:linked {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+* {
+    font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+        'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+}
+
+/* 滚动条宽度 */
+*::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+}
+
+/* 滚动条里面小方块 */
+*::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* 滚动条里面轨道 */
+*::-webkit-scrollbar-track {
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0);
+}
+/* ================= 基础样式 =================== */
+/* ============================================== */
+
+/* ============================================= */
+/* ============= margin和padding =============== */
+.owl-margin-xs {
+    margin: 5px;
+}
+
+.owl-margin-sm {
+    margin: 10px;
+}
+
+.owl-margin-md {
+    margin: 15px;
+}
+
+.owl-margin-lg {
+    margin: 20px;
+}
+
+.owl-margin-lr-xs {
+    margin: 0 5px;
+}
+
+.owl-margin-lr-sm {
+    margin: 0 10px;
+}
+
+.owl-margin-lr-md {
+    margin: 0 15px;
+}
+
+.owl-margin-lr-lg {
+    margin: 0 25px;
+}
+
+.owl-margin-tb-xs {
+    margin: 5px 0;
+}
+
+.owl-margin-tb-sm {
+    margin: 10px 0;
+}
+
+.owl-margin-tb-md {
+    margin: 15px 0;
+}
+
+.owl-margin-tb-lg {
+    margin: 25px 0;
+}
+
+.owl-margin-le-xs {
+    margin-left: 5px;
+}
+.owl-margin-le-sm {
+    margin-left: 10px;
+}
+.owl-margin-le-md {
+    margin-left: 15px;
+}
+.owl-margin-le-lg {
+    margin-left: 20px;
+}
+
+.owl-margin-rg-xs {
+    margin-right: 5px !important;
+}
+.owl-margin-rg-sm {
+    margin-right: 10px !important;
+}
+.owl-margin-rg-md {
+    margin-right: 15px !important;
+}
+.owl-margin-rg-lg {
+    margin-right: 20px !important;
+}
+
+.owl-margin-bm-xs {
+    margin-bottom: 5px;
+}
+.owl-margin-bm-sm {
+    margin-bottom: 10px;
+}
+.owl-margin-bm-md {
+    margin-bottom: 15px;
+}
+.owl-margin-bm-lg {
+    margin-bottom: 20px;
+}
+
+.owl-margin-top-xs {
+    margin-top: 5px;
+}
+.owl-margin-top-sm {
+    margin-top: 10px;
+}
+.owl-margin-top-md {
+    margin-top: 15px;
+}
+.owl-margin-top-lg {
+    margin-top: 20px;
+}
+
+/* padding */
+.owl-padding-xs {
+    padding: 5px;
+}
+
+.owl-padding-sm {
+    padding: 10px;
+}
+
+.owl-padding-md {
+    padding: 15px;
+}
+
+.owl-padding-lg {
+    padding: 20px;
+}
+
+.owl-padding-lr-xs {
+    padding: 0 5px;
+}
+
+.owl-padding-lr-sm {
+    padding: 0 10px;
+}
+
+.owl-padding-lr-md {
+    padding: 0 15px;
+}
+
+.owl-padding-lr-lg {
+    padding: 0 25px;
+}
+
+.owl-padding-tb-xs {
+    padding: 5px 0;
+}
+
+.owl-padding-tb-sm {
+    padding: 10px 0;
+}
+
+.owl-padding-tb-md {
+    padding: 15px 0;
+}
+
+.owl-padding-tb-lg {
+    padding: 25px 0;
+}
+
+.owl-padding-le-xs {
+    padding-left: 5px;
+}
+.owl-padding-le-sm {
+    padding-left: 10px;
+}
+.owl-padding-le-md {
+    padding-left: 15px;
+}
+.owl-padding-le-lg {
+    padding-left: 20px;
+}
+
+.owl-padding-rg-xs {
+    padding-right: 5px;
+}
+.owl-padding-rg-sm {
+    padding-right: 10px;
+}
+.owl-padding-rg-md {
+    padding-right: 15px;
+}
+.owl-padding-rg-lg {
+    padding-right: 20px;
+}
+
+.owl-padding-bm-xs {
+    padding-bottom: 5px;
+}
+.owl-padding-bm-sm {
+    padding-bottom: 10px;
+}
+.owl-padding-bm-md {
+    padding-bottom: 15px;
+}
+.owl-padding-bm-lg {
+    padding-bottom: 20px;
+}
+
+.owl-padding-top-xs {
+    padding-top: 5px;
+}
+.owl-padding-top-sm {
+    padding-top: 10px;
+}
+.owl-padding-top-md {
+    padding-top: 15px;
+}
+.owl-padding-top-lg {
+    padding-top: 20px;
+}
+/* ============= margin和padding =============== */
+/* ============================================= */
+
+/* ============================================= */
+/* ================ font-size ================= */
+.owl-font-size-xs {
+    font-size: 12px;
+}
+
+.owl-font-size-sm {
+    font-size: 14px;
+}
+
+.owl-font-size-md {
+    font-size: 16px;
+}
+
+.owl-font-size-lg {
+    font-size: 18px;
+}
+/* ================ font-size ================= */
+/* ============================================= */
+
+/* ================== border =================== */
+/* ============================================= */
+.owl-border {
+    border: 1px solid rgba(226, 226, 226, 0.8);
+}
+
+.owl-border-top {
+    border-top: 1px solid rgba(226, 226, 226, 0.8);
+}
+
+.owl-border-bm {
+    border-bottom: 1px solid rgba(226, 226, 226, 0.8);
+}
+
+.owl-border-le {
+    border-left: 1px solid rgba(226, 226, 226, 0.8);
+}
+
+.owl-border-rg {
+    border-right: 1px solid rgba(226, 226, 226, 0.8);
+}
+
+.owl-border-lr {
+    border-right: 1px solid rgba(226, 226, 226, 0.8);
+    border-left: 1px solid rgba(226, 226, 226, 0.8);
+}
+
+.owl-border-tb {
+    border-bottom: 1px solid rgba(226, 226, 226, 0.8);
+    border-top: 1px solid rgba(226, 226, 226, 0.8);
+}
+
+.owl-border-top:first-child {
+    border: 0;
+}
+
+.owl-border-bm:last-child {
+    border: 0;
+}
+/* ================== border =================== */
+/* ============================================= */
+
+.owl-full-he-wi {
+    width: 100%;
+    height: 100%;
+}

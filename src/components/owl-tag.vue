@@ -4,8 +4,8 @@
             width: width + 'px',
             height: height + 'px'
         }"
-        :class="[type ? 'tag-' + type : '']"
-        class="tag text-xs flex align-center justify-center"
+        :class="[type ? 'owl-tag-' + type : '']"
+        class="owl-tag text-xs flex align-center justify-center"
     >
         <slot></slot>
     </div>
@@ -13,7 +13,7 @@
 
 <script>
 export default {
-    name: 'tag',
+    name: 'owl-tag',
     props: {
         // primary | gray | red
         type: {
@@ -37,24 +37,24 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.tag {
+.owl-tag {
     font-size: 12px;
     border: 1px;
     border-radius: 5px;
     padding: 0 5px;
 }
 
-.tag-primary {
+.owl-tag-primary {
     color: white;
     background-color: #87cefa;
 }
 
-.tag-gray {
+.owl-tag-gray {
     color: #81868a;
     background-color: #f0f1f5;
 }
 
-.tag-red {
+.owl-tag-red {
     color: white;
     background-color: red;
 }

@@ -11,7 +11,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.trolley {
-}
-</style>
+<style lang="scss" scoped></style>

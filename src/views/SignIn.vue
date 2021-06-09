@@ -5,7 +5,9 @@
         </div>
         <div class="wrapper">
             <div class="img-container">
-                <img src="@/assets/img/myad.jpg" />
+                <img
+                    src="https://owl-town.oss-cn-chengdu.aliyuncs.com/img/bg-signin.jpg"
+                />
             </div>
             <div class="form-container">
                 <el-form

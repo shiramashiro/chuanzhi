@@ -46,8 +46,12 @@
                         </div>
                     </div>
                     <div class="tags flex">
-                        <tag class="tag" :height="'22'" :type="'red'">200减30</tag>
-                        <tag class="tag" :height="'22'" :type="'red'">99减10</tag>
+                        <owl-tag class="tag" :height="'22'" :type="'red'"
+                            >200减30</owl-tag
+                        >
+                        <owl-tag class="tag" :height="'22'" :type="'red'"
+                            >99减10</owl-tag
+                        >
                     </div>
                     <div class="operation">
                         <div class="oper-left">
@@ -71,10 +75,16 @@
                         <div class="oper-right">
                             <div class="item text-gray">
                                 由“传智书城”发货，并提供售后服务。
-                                {{formatDate('ch', 'hours')}}
+                                {{ formatDate('ch', 'hours') }}
                                 前完成下单，预计
                                 <span style="font-weight: bold">
-                                    {{formatDate('ch', 'day', 1000 * 60 * 60 * 24 * 2)}}
+                                    {{
+                                        formatDate(
+                                            'ch',
+                                            'day',
+                                            1000 * 60 * 60 * 24 * 2
+                                        )
+                                    }}
                                 </span>
                                 可送达
                             </div>
@@ -131,13 +141,7 @@
                         <li class="li">中评</li>
                         <li class="li">差评</li>
                     </ul>
-                    <template v-for="(item, index) in users">
-                        <comment
-                            @like="like(item.id, index)"
-                            :user="item"
-                            :key="index"
-                        ></comment>
-                    </template>
+                    <owl-comments :data="comments"></owl-comments>
                 </div>
             </div>
         </div>
@@ -145,7 +149,7 @@
 </template>
 
 <script>
-import {stringUtils} from '@/mixin/string-utils.js'
+import { stringUtils } from '@/mixin/string-utils.js'
 
 export default {
     name: 'book',
@@ -161,44 +165,52 @@ export default {
                 'http://img3m2.ddimg.cn/26/25/29197502-2_u_8.jpg',
                 'http://img3m2.ddimg.cn/26/25/29197502-3_u_8.jpg'
             ],
-            users: [
+            comments: [
                 {
                     id: 1,
-                    rate: 4.5,
-                    username: 'kongsam',
-                    avatar:
-                        'http://oss.norza.cn/imgs/user/avatar/1/avatar04.jpg',
-                    comment: '评论评论评论评论评论评论',
-                    date: '2021-03-17 10:13:54',
-                    like: 0
+                    user: {
+                        username: 'shiramashiro',
+                        avatar:
+                            'https://owl-town.oss-cn-chengdu.aliyuncs.com/img/head-img%20(3).png',
+                        level: 5
+                    },
+                    postDate: '2020-06-09 16:36:22',
+                    content: '评论，评论，评论，评论，评论，评论。',
+                    dianzan: 0,
+                    cai: 0
                 },
                 {
                     id: 2,
-                    rate: 4,
-                    username: 'hello world',
-                    avatar:
-                        'http://oss.norza.cn/imgs/user/avatar/2/avatar02.jpg',
-                    comment: '评论评论评论评论评论评论',
-                    date: '2021-03-17 13:13:54',
-                    like: 0
+                    user: {
+                        username: 'shiramashiro',
+                        avatar:
+                            'https://owl-town.oss-cn-chengdu.aliyuncs.com/img/head-img%20(3).jpeg',
+                        level: 5
+                    },
+                    postDate: '2020-06-09 16:36:22',
+                    content:
+                        '评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论。',
+                    dianzan: 0,
+                    cai: 0
                 },
                 {
                     id: 3,
-                    rate: 5,
-                    username: 'liuyuchen',
-                    avatar:
-                        'http://oss.norza.cn/imgs/user/avatar/3/liuyuncheng.jpg',
-                    comment: '评论评论评论评论评论评论',
-                    date: '2021-03-17 20:33:54',
-                    like: 0
+                    user: {
+                        username: 'shiramashiro',
+                        avatar:
+                            'https://owl-town.oss-cn-chengdu.aliyuncs.com/img/head-img%20(3).jpeg',
+                        level: 5
+                    },
+                    postDate: '2020-06-09 16:36:22',
+                    content:
+                        '评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论。',
+                    dianzan: 0,
+                    cai: 0
                 }
             ]
         }
     },
     methods: {
-        like(userId, index) {
-            this.users[index].like += 1
-        },
         handleChange(value) {
             console.log(value)
         }

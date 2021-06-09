@@ -1,5 +1,10 @@
 <template>
-    <div class="book-fiche" @click="$router.push('/book/' + data.id)">
+    <div
+        class="owl-book-fiche"
+        :style="{ height: height, width: width, margin: margin }"
+        :class="[mode ? mode : '']"
+        @click="$router.push(url)"
+    >
         <img class="preview" :src="data.preview" />
         <div class="info">
             <div class="title text-cut">
@@ -17,25 +22,46 @@
 import { stringUtils } from '@/mixin/string-utils.js'
 
 export default {
-    name: 'book-fiche',
+    name: 'owl-book-fiche',
     mixins: [stringUtils],
     props: {
         data: {
             type: Object,
             required: true
+        },
+        url: {
+            type: String,
+            required: true
+        },
+        width: {
+            type: String,
+            default: '150px'
+        },
+        height: {
+            type: String,
+            default: 'auto'
+        },
+        margin: {
+            type: String,
+            default: '0 10px'
+        },
+        mode: {
+            type: String,
+            default: 'fiche'
         }
     }
 }
 </script>
 
 <style lang="scss" scoped>
-.book-fiche {
+.owl-book-fiche {
+    cursor: pointer;
     width: 150px;
-    height: 190px;
+    height: auto;
     margin: 0 10px;
 
     .preview {
-        width: 130px;
+        width: 100%;
         height: 170px;
     }
 
@@ -58,5 +84,17 @@ export default {
     .price {
         font-weight: bold;
     }
+}
+
+.owl-book-fiche:hover {
+    .title {
+        color: red;
+        text-decoration: underline;
+        text-decoration-color: red;
+    }
+}
+
+.fiche {
+    padding: 5px;
 }
 </style>

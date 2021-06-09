@@ -2,7 +2,6 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import './assets/css/global.css'
 import './assets/icon/iconfont.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import 'element-ui/lib/theme-chalk/display.css'
@@ -37,12 +36,20 @@ axios.interceptors.response.use(
 )
 
 // 导入组件，并全局注册
-import bookFiche from '@/components/book-fiche.vue'
-Vue.component('book-fiche', bookFiche)
-import comment from '@/components/comment.vue'
-Vue.component('comment', comment)
-import tag from '@/components/tag.vue'
-Vue.component('tag', tag)
+import owlBookFiche from '@/components/owl-book-fiche.vue'
+import owlComments from '@/components/owl-comments.vue'
+import owlTag from '@/components/owl-tag.vue'
+import owlCategoryBar from '@/components/owl-category-bar.vue'
+import owlCustFooter from '@/components/owl-cust-footer.vue'
+import owlNavigation from '@/components/owl-navigation.vue'
+import owlProfilePhoto from '@/components/owl-profile-photo.vue'
+Vue.component('owl-book-fiche', owlBookFiche)
+Vue.component('owl-comments', owlComments)
+Vue.component('owl-tag', owlTag)
+Vue.component('owl-category-bar', owlCategoryBar)
+Vue.component('owl-cust-footer', owlCustFooter)
+Vue.component('owl-navigation', owlNavigation)
+Vue.component('owl-profile-photo', owlProfilePhoto)
 
 Vue.config.productionTip = false
 

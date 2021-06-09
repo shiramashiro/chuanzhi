@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Trolley from '@/views/Trolley.vue'
+import trolley from '@/views/trolley.vue'
 import index from '@/views/index.vue'
 import signin from '@/views/signin.vue'
 import signup from '@/views/signup.vue'
 import book from '@/views/book.vue'
+import category from '@/views/category.vue'
 
 Vue.use(VueRouter)
 
@@ -31,8 +32,13 @@ const routes = [
     },
     {
         path: '/trolley',
-        component: Trolley,
+        component: trolley,
         meta: { title: '传智书城 - 购物车' }
+    },
+    {
+        path: '/category/:type',
+        component: category,
+        meta: { title: '传智书城 - 分类' }
     }
 ]
 
