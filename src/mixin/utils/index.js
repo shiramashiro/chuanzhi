@@ -18,7 +18,6 @@ export const utils = {
             let concated = ''
             if (target !== undefined) {
                 for (let i = 0; i < target.length; i++) {
-                    console.log(target[i])
                     if (target.length === i + 1) {
                         let values = Object.values(target[i])
                         concated += values[key]

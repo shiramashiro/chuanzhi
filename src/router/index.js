@@ -6,6 +6,7 @@ import signin from '@/views/signin.vue'
 import signup from '@/views/signup.vue'
 import book from '@/views/book.vue'
 import category from '@/views/category.vue'
+import indents from '@/views/indents.vue'
 
 Vue.use(VueRouter)
 
@@ -34,6 +35,11 @@ const routes = [
         path: '/trolley',
         component: trolley,
         meta: { title: '传智书城 - 购物车' }
+    },
+    {
+        path: '/indents',
+        component: indents,
+        meta: { title: '传智书城 - 我的订单' }
     },
     {
         path: '/category/:types',

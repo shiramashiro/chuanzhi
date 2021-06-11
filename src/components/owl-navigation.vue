@@ -86,14 +86,14 @@ export default {
                     label: '购物车',
                     style: 'el-icon-shopping-cart-1',
                     isHaveDropMenu: false
+                },
+                {
+                    href: '/indents',
+                    label: '我的订单',
+                    style: 'el-icon-s-order'
                 }
             ],
             dropMenuItems: [
-                {
-                    href: '/order',
-                    label: '我的订单',
-                    style: 'el-icon-s-order'
-                },
                 {
                     href: '/message',
                     label: '我的消息',
