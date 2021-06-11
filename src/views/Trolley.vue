@@ -64,12 +64,7 @@ export default {
                 type: 'warning'
             })
                 .then(() => {
-                    this.trolley.splice(index, 1)
-                    this.deleteTrolleyRow(row.id)
-                    this.$message({
-                        type: 'success',
-                        message: '已成功删除'
-                    })
+                    this.deleteTrolleyRow(index, row.id)
                 })
                 .catch(() => {
                     this.$message({
@@ -85,17 +80,7 @@ export default {
                 type: 'warning'
             })
                 .then(() => {
-                    let subtotal = 0
-                    for (let index = 0; index < this.trolley.length; index++) {
-                        subtotal += this.trolley[index].total
-                    }
-                    this.setIndent(this.trolley, subtotal)
-                    this.$message({
-                        type: 'success',
-                        message: '结算成功'
-                    })
-                    this.deleteTrolleyRows('60c1ab65a7297656dd5a9f31')
-                    this.trolley.splice(0, this.trolley.length)
+                    this.setIndent()
                 })
                 .catch(() => {
                     this.$message({
