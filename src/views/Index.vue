@@ -34,10 +34,10 @@
                 <div class="col-2 owl-margin-le-lg">
                     <div class="content flex align-center justify-between">
                         <owl-book-fiche
-                            v-for="(item, index) in hotBooks"
+                            v-for="(item, index) in books"
                             :key="index"
-                            :url="'/book/' + item.id"
                             :data="item"
+                            :url="'/book/' + item.id"
                         ></owl-book-fiche>
                     </div>
                 </div>
@@ -47,43 +47,22 @@
 </template>
 
 <script>
+import { service } from '@/mixin/service/index.js'
+
 export default {
     name: 'index',
+    mixins: [service],
     data() {
         return {
             carouselItems: [
                 'https://owl-town.oss-cn-chengdu.aliyuncs.com/static/slideshow/2021032619353510220.jpg',
                 'https://owl-town.oss-cn-chengdu.aliyuncs.com/static/slideshow/20210326193508509.jpg',
                 'https://owl-town.oss-cn-chengdu.aliyuncs.com/static/slideshow/2021032611362390127.jpg'
-            ],
-            // 获取数据库中的数据
-            hotBooks: [
-                {
-                    id: 1,
-                    type: 'hot',
-                    preview: 'http://img3m0.ddimg.cn/13/17/22722790-1_u_31.jpg',
-                    title: 'JavaScript权威指南',
-                    authors: ['(美)David Flanagan（弗兰纳根）'],
-                    price: 90.4
-                },
-                {
-                    id: 2,
-                    type: 'hot',
-                    preview: 'http://img3m0.ddimg.cn/80/13/23214590-1_w_9.jpg',
-                    title: '高性能MySQL',
-                    authors: ['(美)施瓦茨', '(美)扎伊采夫', '(美)特卡琴科'],
-                    price: 22.22
-                },
-                {
-                    id: 3,
-                    type: 'hot',
-                    preview: 'http://img3m5.ddimg.cn/55/8/28495225-1_w_7.jpg',
-                    title: '深入理解Java虚拟机',
-                    authors: ['周志明'],
-                    price: 22.22
-                }
             ]
         }
+    },
+    mounted() {
+        this.getBooksByTypes('all')
     }
 }
 </script>

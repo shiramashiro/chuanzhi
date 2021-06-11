@@ -9,7 +9,7 @@
                 <div class="row-1 owl-margin-tb-xs flex justify-center">
                     <owl-profile-photo
                         class="col-1-1"
-                        :src="item.user.avatar"
+                        :src="item.user.profilePhoto"
                         :size="50"
                     ></owl-profile-photo>
                 </div>
@@ -37,25 +37,6 @@
                 <div class="date owl-font-size-xs text-gray owl-margin-tb-sm">
                     {{ item.postDate }}
                 </div>
-                <div class="options flex text-gray">
-                    <el-button
-                        class="owl-margin-rg-lg"
-                        type="text"
-                        size="mini"
-                        @click="handleClick(item.id, index, 'cai')"
-                    >
-                        {{ item.cai }}
-                        <span class="owl-margin-le-xs"> 点赞 </span>
-                    </el-button>
-                    <el-button
-                        type="text"
-                        size="mini"
-                        @click="handleClick(item.id, index, 'cai')"
-                    >
-                        {{ item.dianzan }}
-                        <span class="owl-margin-le-xs"> 反对 </span>
-                    </el-button>
-                </div>
             </div>
         </div>
     </div>
@@ -78,3 +59,9 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.col-1 {
+    width: 150px;
+}
+</style>

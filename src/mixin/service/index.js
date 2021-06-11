@@ -8,6 +8,13 @@ import { checkVal } from '../../utils/index.js'
  * @since 2021年6月10日01:31:20
  */
 export const service = {
+    data() {
+        return {
+            books: [],
+            book: {},
+            comments: []
+        }
+    },
     methods: {
         /**
          *
@@ -21,12 +28,47 @@ export const service = {
         getBooksByTypes(types) {
             checkVal(types)
             this.$axios
-                .post('/get/book/' + types)
+                .post('/get/books/by/types/' + types)
                 .then(res => {
-                    this.result = res.data
+                    this.books = res.data
                 })
                 .catch(err => {
                     console.log(err)
+                })
+        },
+        /**
+         * 通过书籍ID获取书籍。
+         *
+         * @param {string} id 书籍id
+         */
+        getBookById(id) {
+            checkVal(id)
+            this.$axios
+                .post('/get/book/by/id/' + id)
+                .then(res => {
+                    this.book = res.data
+                })
+                .catch(err => {
+                    console.error(err)
+                })
+        },
+        /**
+         * 根据书籍id获取评论。
+         *
+         * @param {string} id 书籍id
+         */
+        getComments(id, type) {
+            checkVal(id)
+            this.$axios
+                .post('/get/comments', {
+                    id: id,
+                    type: type
+                })
+                .then(res => {
+                    this.comments = res.data
+                })
+                .catch(err => {
+                    console.error(err)
                 })
         }
     }

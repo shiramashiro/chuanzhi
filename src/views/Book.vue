@@ -5,37 +5,47 @@
                 <div class="row-1-left">
                     <el-carousel>
                         <el-carousel-item
-                            v-for="(item, index) in tempImgs"
+                            v-for="(item, index) in book.previews"
                             :key="index"
                         >
-                            <img style="height: 100%" :src="item" />
+                            <img class="owl-full-he-wi" :src="item" />
                         </el-carousel-item>
                     </el-carousel>
                 </div>
                 <div class="row-1-right">
                     <div class="basic-info">
                         <h1 class="title">
-                            世界文明5000年：一幅包罗万象的世界文明索引图
+                            {{ book.title }}
                         </h1>
                         <h2 class="profile">
-                            包罗全球历史，梳理文明脉络，用时间和空间串起世界文明5000年，以遥远的历史照见当下的世界。
+                            {{ book.profile }}
                         </h2>
                     </div>
                     <div class="messbox">
-                        <span class="item"
-                            >作者:【英】艾玛·玛丽奥特(Emma Marriott)</span
+                        <span
+                            class="item"
+                            v-for="(item, index) in book.authors"
+                            :key="index"
                         >
-                        <span class="item">出品出版社:中国友谊出版公司</span>
-                        <span class="item">出版时间:2021年02月</span>
+                            作者:【{{ item.country }}】{{ item.zhName }}
+                            <span v-if="item.enName">
+                                ({{ item.enName }})
+                            </span>
+                        </span>
+                        <span class="item"> 出版社:{{ book.press }} </span>
+                        <span class="item">
+                            出版时间:{{ book.pressDate }}
+                        </span>
                     </div>
                     <div class="price">
                         <div class="col-1">
                             <div class="col-1-left">
                                 <p class="discount">
-                                    ¥21.00<span>（5折）</span>
+                                    ¥{{ book.price * book.discount }}
+                                    <span>{{ book.discount * 10 }}折</span>
                                 </p>
                                 <p class="origin-price">
-                                    定价<span>¥42.00</span>
+                                    定价<span>¥{{ book.price }}</span>
                                 </p>
                             </div>
                             <div class="col-1-right">
@@ -46,11 +56,13 @@
                         </div>
                     </div>
                     <div class="tags flex">
-                        <owl-tag class="tag" :height="'22'" :type="'red'"
-                            >200减30</owl-tag
-                        >
-                        <owl-tag class="tag" :height="'22'" :type="'red'"
-                            >99减10</owl-tag
+                        <owl-tag
+                            v-for="(item, index) in book.tags"
+                            :key="index"
+                            class="tag"
+                            :height="'22'"
+                            :type="'red'"
+                            >{{ item }}</owl-tag
                         >
                     </div>
                     <div class="operation">
@@ -136,10 +148,14 @@
                 </div>
                 <div class="comment-wrapper">
                     <ul>
-                        <li class="li">全部</li>
-                        <li class="li">好评</li>
-                        <li class="li">中评</li>
-                        <li class="li">差评</li>
+                        <li
+                            v-for="(item, index) in commentType"
+                            :key="index"
+                            class="li"
+                            @click="handleClick(item)"
+                        >
+                            {{ item.name }}
+                        </li>
                     </ul>
                     <owl-comments :data="comments"></owl-comments>
                 </div>
@@ -150,73 +166,37 @@
 
 <script>
 import { utils } from '@/mixin/utils/index.js'
+import { service } from '@/mixin/service/index.js'
 
 export default {
     name: 'book',
-    mixins: [utils],
+    mixins: [utils, service],
     data() {
         return {
             num: 1,
-            bookId: 0,
-            selectedAddress: '',
-            location: require('@/static/json/location.json'),
-            tempImgs: [
-                'http://img3m2.ddimg.cn/26/25/29197502-1_u_7.jpg',
-                'http://img3m2.ddimg.cn/26/25/29197502-2_u_8.jpg',
-                'http://img3m2.ddimg.cn/26/25/29197502-3_u_8.jpg'
+            commentType: [
+                { name: '全部', type: 'all' },
+                { name: '好评', type: 'better' },
+                { name: '中评', type: 'medium' },
+                { name: '差评', type: 'worst' }
             ],
-            comments: [
-                {
-                    id: 1,
-                    user: {
-                        username: 'shiramashiro',
-                        avatar:
-                            'https://owl-town.oss-cn-chengdu.aliyuncs.com/img/head-img%20(3).png',
-                        level: 5
-                    },
-                    postDate: '2020-06-09 16:36:22',
-                    content: '评论，评论，评论，评论，评论，评论。',
-                    dianzan: 0,
-                    cai: 0
-                },
-                {
-                    id: 2,
-                    user: {
-                        username: 'shiramashiro',
-                        avatar:
-                            'https://owl-town.oss-cn-chengdu.aliyuncs.com/img/head-img%20(3).jpeg',
-                        level: 5
-                    },
-                    postDate: '2020-06-09 16:36:22',
-                    content:
-                        '评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论。',
-                    dianzan: 0,
-                    cai: 0
-                },
-                {
-                    id: 3,
-                    user: {
-                        username: 'shiramashiro',
-                        avatar:
-                            'https://owl-town.oss-cn-chengdu.aliyuncs.com/img/head-img%20(3).jpeg',
-                        level: 5
-                    },
-                    postDate: '2020-06-09 16:36:22',
-                    content:
-                        '评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论，评论。',
-                    dianzan: 0,
-                    cai: 0
-                }
-            ]
+            selectedAddress: '',
+            location: require('@/static/json/location.json')
         }
     },
     methods: {
         handleChange(value) {
             console.log(value)
+        },
+        handleClick(item) {
+            this.getComments(this.$route.params.id, item.type)
         }
     },
-    created() {
-        this.bookId = this.$route.params.bookId
+    mounted() {
+        this.$axios.all([
+            this.getBookById(this.$route.params.id),
+            this.getComments(this.$route.params.id, 'all')
+        ])
     }
 }
 </script>

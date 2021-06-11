@@ -5,22 +5,26 @@
  * @version 1.0
  * @since 2021年6月8日18:07:26
  */
- export const utils = {
+export const utils = {
     methods: {
         /**
          * 除了最后一个元素以外，数组中的每一个元素末尾处都拼接一个特定的字符。
          *
          * @param {Object} character 拼接的字符
          * @param {Array} target 目标数组
+         * @param {string} prop 数组中的属性
          */
-        concatWith(character = '，', target) {
+        concatWith(character = '，', target, key = 1) {
             let concated = ''
             if (target !== undefined) {
                 for (let i = 0; i < target.length; i++) {
+                    console.log(target[i])
                     if (target.length === i + 1) {
-                        concated += target[i]
+                        let values = Object.values(target[i])
+                        concated += values[key]
                     } else {
-                        concated += target[i] + character
+                        let values = Object.values(target[i])
+                        concated += values[key] + character
                     }
                 }
             } else {
