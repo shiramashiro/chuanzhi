@@ -1,5 +1,5 @@
 /**
- * 主要抽取适用于视图渲染时所需要的函数。
+ * 用于处理视图渲染时所需要的工具。
  *
  * @author 郑人滏（shiramashiro）
  * @version 1.0
@@ -32,7 +32,7 @@ export const utils = {
             return concated
         },
         /**
-         * 拼接url。
+         * 将基本的地址与参数凭借为一个完整的url。
          *
          * 当传递的参数为undefined时，返回原来的url。
          * 当传递的参数的长度为1时，拼接?keys[0]=values[0]；
