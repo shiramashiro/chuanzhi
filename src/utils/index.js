@@ -7,9 +7,9 @@
 export const checkVal = function f(...params) {
     for (let i = 0; i < params.length; i++) {
         if (params[i] === undefined) {
-            throw ReferenceError(`参数 ${params[i]} 不能为undefined`)
+            throw ReferenceError(`参数不能为undefined`)
         } else if (params[i] === '') {
-            throw ReferenceError(`参数 ${params[i]} 不能为''`)
+            throw ReferenceError(`参数不能为''`)
         }
     }
 }
