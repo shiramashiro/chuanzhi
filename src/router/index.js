@@ -7,6 +7,7 @@ import signup from '@/views/signup.vue'
 import verbose from '@/views/verbose.vue'
 import category from '@/views/category.vue'
 import indents from '@/views/indents.vue'
+import settlement from '@/views/success/settlement.vue'
 
 Vue.use(VueRouter)
 
@@ -45,6 +46,11 @@ const routes = [
         path: '/category/:types',
         component: category,
         meta: { title: '传智书城 - 分类' }
+    },
+    {
+        path: '/success/settlement',
+        component: settlement,
+        meta: { title: '传智书城 - 结算成功' }
     }
 ]
 

@@ -1,4 +1,4 @@
-import { checkVal } from '@/utils/index.js'
+import { checkVal, statistics } from '@/utils/index.js'
 
 /**
  * service层
@@ -13,7 +13,10 @@ export const service = {
             bookshelfs: [],
             bookshelf: {},
             comments: [],
-            trolley: []
+            trolley: [],
+            trolleyTotalPrice: 0,
+            trolleyItemNum: 0,
+            indents: []
         }
     },
     methods: {
@@ -79,6 +82,10 @@ export const service = {
                 })
                 .then(res => {
                     this.trolley = res.data
+                    res.data.forEach(element => {
+                        this.trolleyItemNum += element.num
+                    })
+                    this.trolleyTotalPrice = statistics(res.data)
                 })
         },
         /**
@@ -120,13 +127,24 @@ export const service = {
         /**
          * 添加一条商品到购物车中。
          *
-         * @param {string} userId 用户ID
+         * @param {Object} bookshelf 书籍信息
          */
-        setTrolleyRow(userId) {
-            checkVal(userId)
-            this.$axios.post('/set/trolley/row', {
-                id: id
-            })
+        setTrolleyRow(bookshelf, num) {
+            this.$axios
+                .post('/set/trolley/row', {
+                    id: bookshelf.id,
+                    userId: '60c1ab65a7297656dd5a9f31',
+                    title: bookshelf.title,
+                    price: bookshelf.price,
+                    total: bookshelf.price * num,
+                    num: num
+                })
+                .then(res => {
+                    this.$message({
+                        type: 'success',
+                        message: '成功加入购物车'
+                    })
+                })
         },
         /**
          * 点击结算，将购物车信息添加到订单中。
@@ -136,15 +154,16 @@ export const service = {
          * 3. 如果第2步完成，则删除购物车数据，并提示用户结算成功，且清空数据库中的该用户的购物车信息。
          */
         setIndent() {
-            let subtotal = 0
-            for (let index = 0; index < this.trolley.length; index++) {
-                subtotal += this.trolley[index].total
-            }
             this.$axios
                 .post('/set/indent', {
                     userId: '60c1ab65a7297656dd5a9f31',
                     trolley: this.trolley,
-                    total: subtotal
+                    total: this.trolleyTotalPrice,
+                    receiveName: this.ruleForm.receiveName,
+                    receivePhone: this.ruleForm.receivePhone,
+                    receiveLocation: this.ruleForm.receiveLocation,
+                    payWay: '线上支付',
+                    status: '正在运输'
                 })
                 .then(res => {
                     this.trolley.splice(0, this.trolley.length)
@@ -152,12 +171,47 @@ export const service = {
                         type: 'success',
                         message: '结算成功'
                     })
+                    this.$router.push('/success/settlement')
                     this.deleteTrolleyRows('60c1ab65a7297656dd5a9f31')
                 })
                 .catch(err => {
                     this.$message({
                         type: 'error',
                         message: '结算失败，服务器错误'
+                    })
+                })
+        },
+        getIndents() {
+            this.$axios
+                .post('/get/indents', {
+                    userId: '60c1ab65a7297656dd5a9f31'
+                })
+                .then(res => {
+                    this.indents = res.data
+                })
+                .catch(err => {
+                    this.$message({
+                        type: 'error',
+                        message: '获取信息失败，服务器错误'
+                    })
+                })
+        },
+        deleteIndent(id, index) {
+            this.$axios
+                .post('/delete/indent', {
+                    id: id
+                })
+                .then(res => {
+                    this.indents.splice(index, 1)
+                    this.$message({
+                        type: 'success',
+                        message: '删除成功'
+                    })
+                })
+                .catch(err => {
+                    this.$message({
+                        type: 'error',
+                        message: '删除失败，服务器错误'
                     })
                 })
         }

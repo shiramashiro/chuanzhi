@@ -67,21 +67,6 @@
                     </div>
                     <div class="operation">
                         <div class="oper-left">
-                            配送至：
-                        </div>
-                        <div class="oper-right">
-                            <div class="item">
-                                <el-cascader
-                                    size="mini"
-                                    v-model="selectedAddress"
-                                    :options="location"
-                                    @change="handleChange"
-                                ></el-cascader>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="operation">
-                        <div class="oper-left">
                             服务：
                         </div>
                         <div class="oper-right">
@@ -118,7 +103,12 @@
                             </div>
                         </div>
                     </div>
-                    <el-button type="primary">加入购物车</el-button>
+                    <el-button
+                        type="primary"
+                        size="mini"
+                        @click="setIntoTrolley"
+                        >加入购物车</el-button
+                    >
                 </div>
             </div>
             <div class="row-2">
@@ -179,12 +169,26 @@ export default {
                 { name: '好评', type: 'better' },
                 { name: '中评', type: 'medium' },
                 { name: '差评', type: 'worst' }
-            ],
-            selectedAddress: '',
-            location: require('@/static/json/location.json')
+            ]
         }
     },
     methods: {
+        setIntoTrolley() {
+            this.$confirm('是否加入购物车？', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            })
+                .then(() => {
+                    this.setTrolleyRow(this.bookshelf, this.num)
+                })
+                .catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '取消加入购物车'
+                    })
+                })
+        },
         handleChange(value) {
             console.log(value)
         },

@@ -1,7 +1,7 @@
 /*
-    author：郑人滏（shiramashiro）
-    since：2021年6月9日18:56:32
-    version：1.0
+    @author：郑人滏（shiramashiro）
+    @version：1.0
+    @since：2021年6月9日18:56:32
 */
 
 /* ============================================== */
@@ -266,18 +266,22 @@ a:active {
 /* ================ font-size ================= */
 .owl-font-size-xs {
     font-size: 12px;
+    color: #606266;
 }
 
 .owl-font-size-sm {
     font-size: 14px;
+    color: #606266;
 }
 
 .owl-font-size-md {
     font-size: 16px;
+    color: #606266;
 }
 
 .owl-font-size-lg {
     font-size: 18px;
+    color: #606266;
 }
 /* ================ font-size ================= */
 /* ============================================= */
@@ -321,8 +325,93 @@ a:active {
 .owl-border-bm:last-child {
     border: 0;
 }
+
+.owl-border-radius-lg {
+    border-radius: 20px;
+}
+
+.owl-border-radius-md {
+    border-radius: 15px;
+}
+
+.owl-border-radius-sm {
+    border-radius: 10px;
+}
+
+.owl-border-radius-xs {
+    border-radius: 6px;
+}
+
+.owl-border-top-radius-lg {
+    border-radius: 20px 0 0 0;
+}
+
+.owl-border-bm-radius-lg {
+    border-radius: 0 0 20px 0;
+}
+
+.owl-border-le-radius-lg {
+    border-radius: 0 0 0 20px;
+}
+
+.owl-border-rg-radius-lg {
+    border-radius: 0 20px 0 0;
+}
+
+.owl-border-top-radius-md {
+    border-radius: 15px 0 0 0;
+}
+
+.owl-border-bm-radius-md {
+    border-radius: 0 0 15px 0;
+}
+
+.owl-border-le-radius-md {
+    border-radius: 0 0 0 15px;
+}
+
+.owl-border-rg-radius-md {
+    border-radius: 0 15px 0 0;
+}
+
+.owl-border-top-radius-sm {
+    border-radius: 10px 0 0 0;
+}
+
+.owl-border-bm-radius-sm {
+    border-radius: 0 0 10px 0;
+}
+
+.owl-border-le-radius-sm {
+    border-radius: 0 0 0 10px;
+}
+
+.owl-border-rg-radius-sm {
+    border-radius: 0 10px 0 0;
+}
+
+.owl-border-top-radius-xs {
+    border-radius: 6px 0 0 0;
+}
+
+.owl-border-bm-radius-xs {
+    border-radius: 0 0 6px 0;
+}
+
+.owl-border-le-radius-xs {
+    border-radius: 0 0 0 6px;
+}
+
+.owl-border-rg-radius-xs {
+    border-radius: 0 6px 0 0;
+}
+
 /* ================== border =================== */
 /* ============================================= */
+
+.owl-card {
+    box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+}
 
 .owl-full-he-wi {
     width: 100%;

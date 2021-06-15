@@ -12,3 +12,18 @@ export const checkVal = function f(...params) {
         }
     }
 }
+
+/**
+ *
+ * 计算数组中所有元素的总和
+ *
+ * @param {Array} data
+ * @returns 总和
+ */
+export const statistics = function f(data) {
+    let total = 0
+    data.forEach(element => {
+        total += element.price * element.num
+    })
+    return total
+}
