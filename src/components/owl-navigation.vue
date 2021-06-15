@@ -96,28 +96,8 @@ export default {
             dropMenuItems: [
                 {
                     href: '/message',
-                    label: '我的消息',
+                    label: '消息',
                     style: 'el-icon-chat-round'
-                },
-                {
-                    href: '/channel',
-                    label: '我的频道',
-                    style: 'el-icon-bell'
-                },
-                {
-                    href: '/account',
-                    label: '我的账户',
-                    style: 'el-icon-s-finance'
-                },
-                {
-                    href: '/vip',
-                    label: '会员中心',
-                    style: 'el-icon-s-custom'
-                },
-                {
-                    href: '/subscriptions',
-                    label: '订阅店铺',
-                    style: 'el-icon-thumb'
                 },
                 {
                     href: '/collection',

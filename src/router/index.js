@@ -4,7 +4,7 @@ import trolley from '@/views/trolley.vue'
 import index from '@/views/index.vue'
 import signin from '@/views/signin.vue'
 import signup from '@/views/signup.vue'
-import book from '@/views/book.vue'
+import verbose from '@/views/verbose.vue'
 import category from '@/views/category.vue'
 import indents from '@/views/indents.vue'
 
@@ -27,8 +27,8 @@ const routes = [
         meta: { title: '传智书城 - 注册' }
     },
     {
-        path: '/book/:id',
-        component: book,
+        path: '/verbose/:id',
+        component: verbose,
         meta: { title: '传智书城 - 书籍详细' }
     },
     {

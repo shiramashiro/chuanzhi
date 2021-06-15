@@ -34,10 +34,10 @@
                 <div class="col-2 owl-margin-le-lg">
                     <div class="content flex align-center justify-between">
                         <owl-book-fiche
-                            v-for="(item, index) in books"
+                            v-for="(item, index) in bookshelfs"
                             :key="index"
                             :data="item"
-                            :url="'/book/' + item.id"
+                            :url="'/verbose/' + item.id"
                         ></owl-book-fiche>
                     </div>
                 </div>
@@ -62,7 +62,7 @@ export default {
         }
     },
     mounted() {
-        this.getBooksByTypes('all')
+        this.geBookshelfsByTypes('all')
     }
 }
 </script>

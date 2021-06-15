@@ -10,8 +10,8 @@ import { checkVal } from '../../utils/index.js'
 export const service = {
     data() {
         return {
-            books: [],
-            book: {},
+            bookshelfs: [],
+            bookshelf: {},
             comments: [],
             trolley: []
         }
@@ -26,32 +26,22 @@ export const service = {
          *
          * @param {string} types 书籍类型
          */
-        getBooksByTypes(types) {
+        geBookshelfsByTypes(types) {
             checkVal(types)
-            this.$axios
-                .post('/get/books/by/types/' + types)
-                .then(res => {
-                    this.books = res.data
-                })
-                .catch(err => {
-                    console.log(err)
-                })
+            this.$axios.post('/get/bookshelfs/by/types/' + types).then(res => {
+                this.bookshelfs = res.data
+            })
         },
         /**
          * 通过书籍ID获取书籍。
          *
          * @param {string} id 书籍id
          */
-        getBookById(id) {
+        getBookshelf(id) {
             checkVal(id)
-            this.$axios
-                .post('/get/book/by/id/' + id)
-                .then(res => {
-                    this.book = res.data
-                })
-                .catch(err => {
-                    console.error(err)
-                })
+            this.$axios.post('/get/bookshelf/' + id).then(res => {
+                this.bookshelf = res.data
+            })
         },
         /**
          * 根据书籍id获取评论。
@@ -62,14 +52,11 @@ export const service = {
             checkVal(id)
             this.$axios
                 .post('/get/comments', {
-                    id: id,
+                    bookshelfId: id,
                     type: type
                 })
                 .then(res => {
                     this.comments = res.data
-                })
-                .catch(err => {
-                    console.error(err)
                 })
         },
 

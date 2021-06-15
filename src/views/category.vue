@@ -3,7 +3,7 @@
         <owl-category-bar />
         <div class="books flex justify-between">
             <owl-book-fiche
-                v-for="(item, index) in books"
+                v-for="(item, index) in bookshelfs"
                 :key="index"
                 :data="item"
                 :margin="'20px 12px'"
@@ -24,7 +24,7 @@ export default {
         return {}
     },
     mounted() {
-        this.getBooksByTypes(this.$route.params.types)
+        this.geBookshelfsByTypes(this.$route.params.types)
     }
 }
 </script>

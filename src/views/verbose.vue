@@ -5,7 +5,7 @@
                 <div class="row-1-left">
                     <el-carousel>
                         <el-carousel-item
-                            v-for="(item, index) in book.previews"
+                            v-for="(item, index) in bookshelf.previews"
                             :key="index"
                         >
                             <img class="owl-full-he-wi" :src="item" />
@@ -15,16 +15,16 @@
                 <div class="row-1-right">
                     <div class="basic-info">
                         <h1 class="title">
-                            {{ book.title }}
+                            {{ bookshelf.title }}
                         </h1>
                         <h2 class="profile">
-                            {{ book.profile }}
+                            {{ bookshelf.profile }}
                         </h2>
                     </div>
                     <div class="messbox">
                         <span
                             class="item"
-                            v-for="(item, index) in book.authors"
+                            v-for="(item, index) in bookshelf.authors"
                             :key="index"
                         >
                             作者:【{{ item.country }}】{{ item.zhName }}
@@ -32,20 +32,20 @@
                                 ({{ item.enName }})
                             </span>
                         </span>
-                        <span class="item"> 出版社:{{ book.press }} </span>
+                        <span class="item"> 出版社:{{ bookshelf.press }} </span>
                         <span class="item">
-                            出版时间:{{ book.pressDate }}
+                            出版时间:{{ bookshelf.pressDate }}
                         </span>
                     </div>
                     <div class="price">
                         <div class="col-1">
                             <div class="col-1-left">
                                 <p class="discount">
-                                    ¥{{ book.price * book.discount }}
-                                    <span>{{ book.discount * 10 }}折</span>
+                                    ¥{{ bookshelf.price * bookshelf.discount }}
+                                    <span>{{ bookshelf.discount * 10 }}折</span>
                                 </p>
                                 <p class="origin-price">
-                                    定价<span>¥{{ book.price }}</span>
+                                    定价<span>¥{{ bookshelf.price }}</span>
                                 </p>
                             </div>
                             <div class="col-1-right">
@@ -57,7 +57,7 @@
                     </div>
                     <div class="tags flex">
                         <owl-tag
-                            v-for="(item, index) in book.tags"
+                            v-for="(item, index) in bookshelf.tags"
                             :key="index"
                             class="tag"
                             :height="'22'"
@@ -194,7 +194,7 @@ export default {
     },
     mounted() {
         this.$axios.all([
-            this.getBookById(this.$route.params.id),
+            this.getBookshelf(this.$route.params.id),
             this.getComments(this.$route.params.id, 'all')
         ])
     }
@@ -203,7 +203,7 @@ export default {
 
 <style lang="scss" scoped>
 .book-details {
-    margin: 2% 15%;
+    margin: 1% 15%;
 
     .content-wrapper {
         .row-1 {
