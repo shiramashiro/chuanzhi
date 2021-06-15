@@ -166,11 +166,11 @@
 
 <script>
 import { utils } from '@/mixin/utils/index.js'
-import { book, comment } from '@/mixin/service/index.js'
+import { service } from '@/mixin/service/index.js'
 
 export default {
     name: 'book',
-    mixins: [utils, book, comment],
+    mixins: [utils, service],
     data() {
         return {
             num: 1,

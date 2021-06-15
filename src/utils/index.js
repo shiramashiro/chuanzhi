@@ -1,5 +1,4 @@
 /**
- *
  * 检查变量是否为undefined或''
  *
  * @param  {...any} params 变量值，可检测多个
