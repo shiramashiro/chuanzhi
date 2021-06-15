@@ -1,7 +1,7 @@
 <template>
     <div class="signin">
         <div>
-            <h2>会员登录</h2>
+            <h2>用户登录</h2>
         </div>
         <div class="wrapper">
             <div class="img-container">
@@ -18,13 +18,13 @@
                     :hide-required-asterisk="true"
                     label-width="100px"
                 >
-                    <el-form-item label="会员名：" prop="username">
+                    <el-form-item label="用户名" prop="username">
                         <el-input
                             size="mini"
                             v-model="form.username"
                         ></el-input>
                     </el-form-item>
-                    <el-form-item label="密码：" prop="password">
+                    <el-form-item label="密码" prop="password">
                         <el-input
                             size="mini"
                             v-model="form.password"
@@ -48,12 +48,12 @@
 
 <script>
 import Vcode from 'vue-puzzle-vcode'
+import { entry } from '@/mixin/service/entry.js'
 
 export default {
     name: 'signin',
-    components: {
-        Vcode
-    },
+    mixins: [entry],
+    components: { Vcode },
     data() {
         return {
             isShow: false,
@@ -65,13 +65,13 @@ export default {
                 username: [
                     {
                         required: true,
-                        message: '请输入您的会员名！',
+                        message: '请输入您的用户名！',
                         trigger: 'blur'
                     },
                     {
-                        min: 4,
+                        min: 3,
                         max: 15,
-                        message: '长度在 4 到 15 之间',
+                        message: '长度在 3 到 15 之间',
                         trigger: 'blur'
                     }
                 ],
@@ -103,15 +103,10 @@ export default {
         },
         success(time) {
             this.isShow = false
-            this.$message({
-                type: 'success',
-                duration: 2000,
-                message:
-                    '验证通过，使用' +
-                    Math.floor(Number(time) * 100) / 100 +
-                    's'
+            this.signin({
+                username: this.form.username,
+                password: this.form.password
             })
-            // 编写登陆页面逻辑层
         },
         close() {
             this.isShow = false
