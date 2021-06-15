@@ -13,6 +13,7 @@ export const service = {
             bookshelfs: [],
             bookshelf: {},
             comments: [],
+            collectBookshelfs: [],
             trolley: [],
             trolleyTotalPrice: 0,
             trolleyItemNum: 0,
@@ -235,6 +236,27 @@ export const service = {
                         message: '删除失败，服务器错误'
                     })
                 })
+        },
+        setCollectBookshelf(collectBookshelf) {
+            this.$axios
+                .post('/set/collectBookshelf', collectBookshelf)
+                .then(res => {
+                    this.$message({
+                        type: 'success',
+                        message: '收藏成功'
+                    })
+                })
+                .catch(err => {
+                    this.$message({
+                        type: 'error',
+                        message: '收藏失败，服务器错误'
+                    })
+                })
+        },
+        getCollectBookshelf(params) {
+            this.$axios.post('/get/collectBookshelfs' , params).then(res => {
+                this.collectBookshelfs = res.data
+            })
         }
     }
 }

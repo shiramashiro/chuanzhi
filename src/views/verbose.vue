@@ -109,6 +109,9 @@
                         @click="setIntoTrolley"
                         >加入购物车</el-button
                     >
+                    <el-button @click="collect" size="mini">
+                        收藏书籍
+                    </el-button>
                 </div>
             </div>
             <div class="row-2">
@@ -243,6 +246,13 @@ export default {
         }
     },
     methods: {
+        collect() {
+            this.setCollectBookshelf({
+                bookshelf: this.bookshelf,
+                collectedDate: this.formatDate('line', 'full'),
+                userId: '60c1ab65a7297656dd5a9f31'
+            })
+        },
         postComment() {
             this.setComment({
                 type: this.selectedCommentType,

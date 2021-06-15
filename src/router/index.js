@@ -8,6 +8,7 @@ import verbose from '@/views/verbose.vue'
 import category from '@/views/category.vue'
 import indents from '@/views/indents.vue'
 import settlement from '@/views/success/settlement.vue'
+import collectBookshelf from '@/views/collect-bookshelf.vue'
 
 Vue.use(VueRouter)
 
@@ -51,6 +52,11 @@ const routes = [
         path: '/success/settlement',
         component: settlement,
         meta: { title: '传智书城 - 结算成功' }
+    },
+    {
+        path: '/collection',
+        component: collectBookshelf,
+        meta: { title: '传智书城 - 我的收藏' }
     }
 ]
 
