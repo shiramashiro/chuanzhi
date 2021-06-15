@@ -147,6 +147,43 @@
                             {{ item.name }}
                         </li>
                     </ul>
+                    <div class="set-comment flex justify-between">
+                        <el-select
+                            class="owl-margin-rg-lg"
+                            size="mini"
+                            v-model="selectedCommentType"
+                            placeholder="请选择评论类型"
+                        >
+                            <el-option
+                                v-for="item in commentTypeptions"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value"
+                            >
+                            </el-option>
+                        </el-select>
+                        <div class="left owl-margin-rg-lg" style="width: 100%">
+                            <el-form
+                                size="mini"
+                                autosize
+                                :rules="commentRules"
+                                :model="commentForm"
+                                hide-required-asterisk
+                            >
+                                <el-form-item prop="commentContent">
+                                    <el-input
+                                        type="textarea"
+                                        v-model="commentForm.commentContent"
+                                    ></el-input>
+                                </el-form-item>
+                            </el-form>
+                        </div>
+                        <div class="btn">
+                            <el-button @click="postComment" size="mini"
+                                >发表</el-button
+                            >
+                        </div>
+                    </div>
                     <owl-comments :data="comments"></owl-comments>
                 </div>
             </div>
@@ -163,6 +200,39 @@ export default {
     mixins: [utils, service],
     data() {
         return {
+            commentTypeptions: [
+                {
+                    value: 'better',
+                    label: '好评'
+                },
+                {
+                    value: 'medium',
+                    label: '中评'
+                },
+                {
+                    value: 'worst',
+                    label: '差评'
+                }
+            ],
+            selectedCommentType: '',
+            commentRules: {
+                commentContent: [
+                    {
+                        required: true,
+                        message: '请输入评论内容',
+                        trigger: 'blur'
+                    },
+                    {
+                        min: 4,
+                        max: 500,
+                        message: '长度在 4 到 500 个字符',
+                        trigger: 'blur'
+                    }
+                ]
+            },
+            commentForm: {
+                commentContent: ''
+            },
             num: 1,
             commentType: [
                 { name: '全部', type: 'all' },
@@ -173,6 +243,22 @@ export default {
         }
     },
     methods: {
+        postComment() {
+            this.setComment({
+                type: this.selectedCommentType,
+                content: this.commentForm.commentContent,
+                postDate: this.formatDate('line', 'full'),
+                cai: 0,
+                dianzan: 0,
+                user: {
+                    username: 'shiramashiro',
+                    profilePhoto:
+                        'https://owl-town.oss-cn-chengdu.aliyuncs.com/img/head-img%20(3).jpeg',
+                    level: 6
+                },
+                bookshelfId: this.bookshelf.id
+            })
+        },
         setIntoTrolley() {
             this.$confirm('是否加入购物车？', '提示', {
                 confirmButtonText: '确定',

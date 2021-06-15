@@ -62,6 +62,27 @@ export const service = {
                     this.comments = res.data
                 })
         },
+        /**
+         * 添加评论。
+         *
+         * @param {Object} comment 评论数据
+         */
+        setComment(comment) {
+            this.$axios
+                .post('/set/comment', comment)
+                .then(res => {
+                    this.$message({
+                        type: 'success',
+                        message: '发表成功'
+                    })
+                })
+                .catch(err => {
+                    this.$message({
+                        type: 'error',
+                        message: '发表失败，服务器错误'
+                    })
+                })
+        },
 
         /**
          * =======================================================================================================
