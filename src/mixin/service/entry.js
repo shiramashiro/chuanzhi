@@ -20,6 +20,11 @@ export const entry = {
                 .post('/signin', params)
                 .then(res => {
                     if (res.data.code === 200) {
+                        sessionStorage.setItem('userId', res.data.data.id)
+                        sessionStorage.setItem(
+                            'userInfo',
+                            JSON.stringify(res.data.data)
+                        )
                         this.$message({
                             type: 'success',
                             message: res.data.message
@@ -46,6 +51,36 @@ export const entry = {
          *
          * @param {Object} params 参数
          */
-        signup(params) {}
+        signup(params) {
+            this.$axios
+                .post('/signup', params)
+                .then(res => {
+                    if (res.data.code === 200) {
+                        this.$message({
+                            type: 'success',
+                            message: res.data.message
+                        })
+                        setTimeout(() => {
+                            this.$router.push('/signin')
+                        }, 1500)
+                    } else if (res.data.code === 500) {
+                        this.$message({
+                            type: 'error',
+                            message: res.data.message
+                        })
+                    } else {
+                        this.$message({
+                            type: 'error',
+                            menubar: res.data.message
+                        })
+                    }
+                })
+                .catch(err => {
+                    this.$message({
+                        type: 'error',
+                        message: '注册失败，服务器错误'
+                    })
+                })
+        }
     }
 }

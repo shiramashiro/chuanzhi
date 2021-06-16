@@ -94,14 +94,11 @@ export default {
     methods: {
         submit() {
             this.$refs.form.validate(valida => {
-                if (!valida) {
-                    return false
-                } else {
-                    this.isShow = true
-                }
+                if (!valida) return false
+                this.isShow = true
             })
         },
-        success(time) {
+        success() {
             this.isShow = false
             this.signin({
                 username: this.form.username,

@@ -11,10 +11,10 @@
             :hide-required-asterisk="true"
             label-width="100px"
         >
-            <el-form-item class="form-item" label="会员邮箱：" prop="email">
+            <el-form-item class="form-item" label="邮箱：" prop="email">
                 <el-input v-model="form.email" size="mini"></el-input>
             </el-form-item>
-            <el-form-item class="form-item" label="会员名：" prop="username">
+            <el-form-item class="form-item" label="用户名：" prop="username">
                 <el-input v-model="form.username" size="mini"></el-input>
             </el-form-item>
             <el-form-item class="form-item" label="密码：" prop="password">
@@ -67,14 +67,22 @@
                 >已有账号？点击登陆</router-link
             >
         </div>
+        <Vcode :show="isShow" @success="success" @close="close" />
     </div>
 </template>
 
 <script>
+import Vcode from 'vue-puzzle-vcode'
+import { entry } from '@/mixin/service/entry.js'
+import { utils } from '@/mixin/utils/index.js'
+
 export default {
     name: 'signup',
+    mixins: [entry, utils],
+    components: { Vcode },
     data() {
         return {
+            isShow: false,
             form: {
                 email: '',
                 username: '',
@@ -88,7 +96,7 @@ export default {
                 email: [
                     {
                         required: true,
-                        message: '请输入您的会员邮箱！',
+                        message: '请输入您的邮箱！',
                         trigger: 'blur'
                     },
                     {
@@ -101,7 +109,7 @@ export default {
                 username: [
                     {
                         required: true,
-                        message: '请输入您的会员名！',
+                        message: '请输入您的用户名！',
                         trigger: 'blur'
                     },
                     {
@@ -171,8 +179,24 @@ export default {
         submit() {
             this.$refs.form.validate(valida => {
                 if (!valida) return false
-                console.log('提交！')
+                this.isShow = true
             })
+        },
+        success() {
+            this.isShow = false
+            this.signup({
+                username: this.form.username,
+                password: this.form.password,
+                sex: this.form.sex,
+                profile: this.form.profile,
+                phone: this.form.phone,
+                email: this.form.email,
+                level: 1,
+                date: this.formatDate('line', 'full')
+            })
+        },
+        close() {
+            this.isShow = false
         }
     }
 }

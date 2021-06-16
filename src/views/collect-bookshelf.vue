@@ -18,9 +18,7 @@ import { service } from '@/mixin/service/index.js'
 export default {
     mixins: [service],
     mounted() {
-        this.getCollectBookshelf({
-            userId: '60c1ab65a7297656dd5a9f31'
-        })
+        this.getCollectBookshelf()
     }
 }
 </script>

@@ -17,10 +17,24 @@ export const service = {
             trolley: [],
             trolleyTotalPrice: 0,
             trolleyItemNum: 0,
-            indents: []
+            indents: [],
+            userId: ''
         }
     },
     methods: {
+        /**
+         * 检测是否登录
+         */
+        checkLogged() {
+            let session = sessionStorage.getItem('userId')
+            if (session == null) {
+                return false
+            } else {
+                this.userId = session
+                return true
+            }
+        },
+
         /**
          *
          * 通过书籍类型获取书籍。
@@ -69,20 +83,27 @@ export const service = {
          * @param {Object} comment 评论数据
          */
         setComment(comment) {
-            this.$axios
-                .post('/set/comment', comment)
-                .then(res => {
-                    this.$message({
-                        type: 'success',
-                        message: '发表成功'
+            if (this.checkLogged()) {
+                this.$axios
+                    .post('/set/comment', comment)
+                    .then(res => {
+                        this.$message({
+                            type: 'success',
+                            message: '发表成功'
+                        })
                     })
-                })
-                .catch(err => {
-                    this.$message({
-                        type: 'error',
-                        message: '发表失败，服务器错误'
+                    .catch(err => {
+                        this.$message({
+                            type: 'error',
+                            message: '发表失败，服务器错误'
+                        })
                     })
+            } else {
+                this.$message({
+                    type: 'error',
+                    message: '请先登录！'
                 })
+            }
         },
 
         /**
@@ -93,22 +114,27 @@ export const service = {
 
         /**
          * 根据用户ID获取用户的购物车信息。
-         *
-         * @param {string} userId 用户ID
          */
-        getTrolleyRows(userId) {
-            checkVal(userId)
-            this.$axios
-                .post('/get/trolley/rows', {
-                    userId: userId
-                })
-                .then(res => {
-                    this.trolley = res.data
-                    res.data.forEach(element => {
-                        this.trolleyItemNum += element.num
+        getTrolleyRows() {
+            if (this.checkLogged()) {
+                this.$axios
+                    .post('/get/trolley/rows', {
+                        userId: this.userId
                     })
-                    this.trolleyTotalPrice = statistics(res.data)
+                    .then(res => {
+                        this.trolley = res.data
+                        res.data.forEach(element => {
+                            this.trolleyItemNum += element.num
+                        })
+                        this.trolleyTotalPrice = statistics(res.data)
+                    })
+            } else {
+                this.$router.push('/')
+                this.$message({
+                    type: 'error',
+                    message: '请先登录'
                 })
+            }
         },
         /**
          * 删除当前用户操作的购物车行。
@@ -117,34 +143,46 @@ export const service = {
          * @param {string} id 当前操作的行在数据库中的ID
          */
         deleteTrolleyRow(index, id) {
-            checkVal(id)
-            this.$axios
-                .post('/delete/trolley/row', {
-                    id: id
-                })
-                .then(res => {
-                    this.trolley.splice(index, 1)
-                    this.$message({
-                        type: 'success',
-                        message: '已成功删除'
+            if (this.checkLogged()) {
+                this.$axios
+                    .post('/delete/trolley/row', {
+                        id: id
                     })
-                })
-                .catch(err => {
-                    this.$message({
-                        type: 'error',
-                        message: '删除失败，服务器错误'
+                    .then(res => {
+                        this.trolley.splice(index, 1)
+                        this.$message({
+                            type: 'success',
+                            message: '已成功删除'
+                        })
                     })
+                    .catch(err => {
+                        this.$message({
+                            type: 'error',
+                            message: '删除失败，服务器错误'
+                        })
+                    })
+            } else {
+                this.$message({
+                    type: 'error',
+                    message: '请先登录'
                 })
+            }
         },
         /**
          * 删除该用户的所有购物车信息。
          *
-         * @param {string} userId 用户ID
          */
-        deleteTrolleyRows(userId) {
-            this.$axios.post('/delete/trolley/rows', {
-                userId: userId
-            })
+        deleteTrolleyRows() {
+            if (this.checkLogged()) {
+                this.$axios.post('/delete/trolley/rows', {
+                    userId: this.userId
+                })
+            } else {
+                this.$message({
+                    type: 'error',
+                    message: '请先登录'
+                })
+            }
         },
         /**
          * 添加一条商品到购物车中。
@@ -152,21 +190,28 @@ export const service = {
          * @param {Object} bookshelf 书籍信息
          */
         setTrolleyRow(bookshelf, num) {
-            this.$axios
-                .post('/set/trolley/row', {
-                    id: bookshelf.id,
-                    userId: '60c1ab65a7297656dd5a9f31',
-                    title: bookshelf.title,
-                    price: bookshelf.price,
-                    total: bookshelf.price * num,
-                    num: num
-                })
-                .then(res => {
-                    this.$message({
-                        type: 'success',
-                        message: '成功加入购物车'
+            if (this.checkLogged()) {
+                this.$axios
+                    .post('/set/trolley/row', {
+                        id: bookshelf.id,
+                        userId: this.userId,
+                        title: bookshelf.title,
+                        price: bookshelf.price,
+                        total: bookshelf.price * num,
+                        num: num
                     })
+                    .then(res => {
+                        this.$message({
+                            type: 'success',
+                            message: '成功加入购物车'
+                        })
+                    })
+            } else {
+                this.$message({
+                    type: 'error',
+                    message: '请先登录'
                 })
+            }
         },
         /**
          * 点击结算，将购物车信息添加到订单中。
@@ -176,87 +221,129 @@ export const service = {
          * 3. 如果第2步完成，则删除购物车数据，并提示用户结算成功，且清空数据库中的该用户的购物车信息。
          */
         setIndent() {
-            this.$axios
-                .post('/set/indent', {
-                    userId: '60c1ab65a7297656dd5a9f31',
-                    trolley: this.trolley,
-                    total: this.trolleyTotalPrice,
-                    receiveName: this.ruleForm.receiveName,
-                    receivePhone: this.ruleForm.receivePhone,
-                    receiveLocation: this.ruleForm.receiveLocation,
-                    payWay: '线上支付',
-                    status: '正在运输'
-                })
-                .then(res => {
-                    this.trolley.splice(0, this.trolley.length)
-                    this.$message({
-                        type: 'success',
-                        message: '结算成功'
+            if (this.checkLogged()) {
+                this.$axios
+                    .post('/set/indent', {
+                        userId: this.userId,
+                        trolley: this.trolley,
+                        total: this.trolleyTotalPrice,
+                        receiveName: this.ruleForm.receiveName,
+                        receivePhone: this.ruleForm.receivePhone,
+                        receiveLocation: this.ruleForm.receiveLocation,
+                        payWay: '线上支付',
+                        status: '正在运输'
                     })
-                    this.$router.push('/success/settlement')
-                    this.deleteTrolleyRows('60c1ab65a7297656dd5a9f31')
-                })
-                .catch(err => {
-                    this.$message({
-                        type: 'error',
-                        message: '结算失败，服务器错误'
+                    .then(res => {
+                        this.trolley.splice(0, this.trolley.length)
+                        this.$message({
+                            type: 'success',
+                            message: '结算成功'
+                        })
+                        this.$router.push('/success/settlement')
+                        this.deleteTrolleyRows('60c1ab65a7297656dd5a9f31')
                     })
+                    .catch(err => {
+                        this.$message({
+                            type: 'error',
+                            message: '结算失败，服务器错误'
+                        })
+                    })
+            } else {
+                this.$message({
+                    type: 'error',
+                    message: '请先登录'
                 })
+            }
         },
         getIndents() {
-            this.$axios
-                .post('/get/indents', {
-                    userId: '60c1ab65a7297656dd5a9f31'
-                })
-                .then(res => {
-                    this.indents = res.data
-                })
-                .catch(err => {
-                    this.$message({
-                        type: 'error',
-                        message: '获取信息失败，服务器错误'
+            if (this.checkLogged()) {
+                this.$axios
+                    .post('/get/indents', {
+                        userId: this.userId
                     })
+                    .then(res => {
+                        this.indents = res.data
+                    })
+                    .catch(err => {
+                        this.$message({
+                            type: 'error',
+                            message: '获取信息失败，服务器错误'
+                        })
+                    })
+            } else {
+                this.$router.push('/')
+                this.$message({
+                    type: 'error',
+                    message: '请先登录'
                 })
+            }
         },
         deleteIndent(id, index) {
-            this.$axios
-                .post('/delete/indent', {
-                    id: id
-                })
-                .then(res => {
-                    this.indents.splice(index, 1)
-                    this.$message({
-                        type: 'success',
-                        message: '删除成功'
+            if (this.checkLogged()) {
+                this.$axios
+                    .post('/delete/indent', {
+                        id: id
                     })
-                })
-                .catch(err => {
-                    this.$message({
-                        type: 'error',
-                        message: '删除失败，服务器错误'
+                    .then(res => {
+                        this.indents.splice(index, 1)
+                        this.$message({
+                            type: 'success',
+                            message: '删除成功'
+                        })
                     })
+                    .catch(err => {
+                        this.$message({
+                            type: 'error',
+                            message: '删除失败，服务器错误'
+                        })
+                    })
+            } else {
+                this.$router.push('/')
+                this.$message({
+                    type: 'error',
+                    message: '请先登录'
                 })
+            }
         },
         setCollectBookshelf(collectBookshelf) {
-            this.$axios
-                .post('/set/collectBookshelf', collectBookshelf)
-                .then(res => {
-                    this.$message({
-                        type: 'success',
-                        message: '收藏成功'
+            if (this.checkLogged()) {
+                this.$axios
+                    .post('/set/collectBookshelf', collectBookshelf)
+                    .then(res => {
+                        this.$message({
+                            type: 'success',
+                            message: '收藏成功'
+                        })
                     })
-                })
-                .catch(err => {
-                    this.$message({
-                        type: 'error',
-                        message: '收藏失败，服务器错误'
+                    .catch(err => {
+                        this.$message({
+                            type: 'error',
+                            message: '收藏失败，服务器错误'
+                        })
                     })
+            } else {
+                this.$message({
+                    type: 'error',
+                    message: '请先登录'
                 })
+            }
         },
-        getCollectBookshelf(params) {
-            this.$axios.post('/get/collectBookshelfs' , params).then(res => {
-                this.collectBookshelfs = res.data
-            })
+        getCollectBookshelf() {
+            if (this.checkLogged()) {
+                this.$axios
+                    .post('/get/collectBookshelfs', {
+                        userId: this.userId
+                    })
+                    .then(res => {
+                        this.collectBookshelfs = res.data
+                    })
+            } else {
+                this.$router.push('/')
+                this.$message({
+                    type: 'error',
+                    message: '请先登录'
+                })
+            }
         }
     }
 }

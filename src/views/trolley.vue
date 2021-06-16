@@ -135,7 +135,7 @@ export default {
         }
     },
     mounted() {
-        this.getTrolleyRows('60c1ab65a7297656dd5a9f31')
+        this.getTrolleyRows()
     },
     methods: {
         deleteTableRow(index, row) {

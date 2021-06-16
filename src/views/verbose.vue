@@ -260,12 +260,7 @@ export default {
                 postDate: this.formatDate('line', 'full'),
                 cai: 0,
                 dianzan: 0,
-                user: {
-                    username: 'shiramashiro',
-                    profilePhoto:
-                        'https://owl-town.oss-cn-chengdu.aliyuncs.com/img/head-img%20(3).jpeg',
-                    level: 6
-                },
+                user: JSON.parse(sessionStorage.getItem('userInfo')),
                 bookshelfId: this.bookshelf.id
             })
         },

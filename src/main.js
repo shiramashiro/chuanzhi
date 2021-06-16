@@ -7,6 +7,9 @@ import './static/icon/iconfont.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import 'element-ui/lib/theme-chalk/display.css'
 
+// 导入element-ui组件库
+import Element, { Message, MessageBox } from 'element-ui'
+
 axios.defaults.baseURL = 'http://localhost:9000/api/v1'
 axios.interceptors.request.use(
     function(config) {
@@ -24,10 +27,9 @@ axios.interceptors.response.use(
         return Promise.reject(error)
     }
 )
-Vue.prototype.$axios = axios
 
-// 导入element-ui组件库
-import Element, { Message, MessageBox } from 'element-ui'
+Vue.prototype.$axios = axios
+Vue.prototype.$store = store
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm
 Vue.use(Element)
