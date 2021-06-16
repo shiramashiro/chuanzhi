@@ -9,6 +9,7 @@ import category from '@/views/category.vue'
 import indents from '@/views/indents.vue'
 import settlement from '@/views/success/settlement.vue'
 import collectBookshelf from '@/views/collect-bookshelf.vue'
+import press from '@/views/press.vue'
 
 Vue.use(VueRouter)
 
@@ -57,6 +58,11 @@ const routes = [
         path: '/collection',
         component: collectBookshelf,
         meta: { title: '传智书城 - 我的收藏' }
+    },
+    {
+        path: '/press/:pressId',
+        component: press,
+        meta: { title: '传智书城 - 出版社' }
     }
 ]
 

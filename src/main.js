@@ -42,6 +42,9 @@ import owlCategoryBar from '@/components/owl-category-bar.vue'
 import owlCustFooter from '@/components/owl-cust-footer.vue'
 import owlNavigation from '@/components/owl-navigation.vue'
 import owlProfilePhoto from '@/components/owl-profile-photo.vue'
+import owlBookVerboseFiche from '@/components/owl-book-verbose-fiche.vue'
+
+Vue.component('owl-book-verbose-fiche', owlBookVerboseFiche)
 Vue.component('owl-book-fiche', owlBookFiche)
 Vue.component('owl-comments', owlComments)
 Vue.component('owl-tag', owlTag)

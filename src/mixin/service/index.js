@@ -51,6 +51,16 @@ export const service = {
             })
         },
         /**
+         * 将出版社的所有书籍罗列出来
+         */
+        getBookshelfByPressId(pressId) {
+            this.$axios
+                .post('/get/bookshelf/by/pressId/' + pressId)
+                .then(res => {
+                    this.bookshelfs = res.data.data
+                })
+        },
+        /**
          * 通过书籍ID获取书籍。
          *
          * @param {string} id 书籍id
@@ -305,10 +315,14 @@ export const service = {
                 })
             }
         },
-        setCollectBookshelf(collectBookshelf) {
+        setCollectBookshelf(bookshelf) {
             if (this.checkLogged()) {
                 this.$axios
-                    .post('/set/collectBookshelf', collectBookshelf)
+                    .post('/set/collectBookshelf', {
+                        bookshelf: bookshelf,
+                        collectedDate: this.formatDate('line', 'full'),
+                        userId: this.userId
+                    })
                     .then(res => {
                         this.$message({
                             type: 'success',

@@ -32,7 +32,14 @@
                                 ({{ item.enName }})
                             </span>
                         </span>
-                        <span class="item"> 出版社:{{ bookshelf.press }} </span>
+                        <span class="item">
+                            出版社:
+                            <el-link
+                                v-bind:href="'/press/' + bookshelf.pressId"
+                            >
+                                {{ bookshelf.press }}
+                            </el-link>
+                        </span>
                         <span class="item">
                             出版时间:{{ bookshelf.pressDate }}
                         </span>
@@ -247,11 +254,7 @@ export default {
     },
     methods: {
         collect() {
-            this.setCollectBookshelf({
-                bookshelf: this.bookshelf,
-                collectedDate: this.formatDate('line', 'full'),
-                userId: '60c1ab65a7297656dd5a9f31'
-            })
+            this.setCollectBookshelf(this.bookshelf)
         },
         postComment() {
             this.setComment({
