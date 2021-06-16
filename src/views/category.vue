@@ -8,7 +8,7 @@
                 :data="item"
                 :margin="'20px 12px'"
                 :width="'165px'"
-                :url="'/book/' + item.id"
+                :url="'/verbose/' + item.id"
             ></owl-book-fiche>
         </div>
     </div>

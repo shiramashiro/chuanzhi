@@ -36,20 +36,20 @@
                             </span>
                         </a>
                     </li>
-                    <li class="li" v-if="notlogin">
+                    <li class="li" v-if="userId === null">
                         <router-link to="/signin">
                             <span class="span">
                                 <i class="el-icon-s-custom"></i>登陆 \ 注册
                             </span>
                         </router-link>
                     </li>
-                    <el-dropdown v-if="!notlogin">
+                    <el-dropdown v-if="userId !== null">
                         <li class="li">
                             <router-link to="user">
                                 <span class="span">
                                     <el-avatar
                                         :size="25"
-                                        :src="avatar"
+                                        :src="userInfo.profilePhoto"
                                     ></el-avatar>
                                 </span>
                             </router-link>
@@ -76,10 +76,9 @@ export default {
     name: 'owl-navigation',
     data() {
         return {
-            notlogin: false, // 用户登录状态
+            userId: '',
             searchValue: '',
-            avatar:
-                'https://owl-town.oss-cn-chengdu.aliyuncs.com/img/head-img%20(3).jpeg', // 修改用户信息
+            userInfo: {},
             menuItems: [
                 {
                     href: '/trolley',
@@ -116,6 +115,10 @@ export default {
                 }
             ]
         }
+    },
+    mounted() {
+        this.userId = sessionStorage.getItem('userId')
+        this.userInfo = JSON.parse(sessionStorage.getItem('userInfo'))
     }
 }
 </script>
