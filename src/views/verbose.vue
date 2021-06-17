@@ -22,15 +22,8 @@
                         </h2>
                     </div>
                     <div class="messbox">
-                        <span
-                            class="item"
-                            v-for="(item, index) in bookshelf.authors"
-                            :key="index"
-                        >
-                            作者:【{{ item.country }}】{{ item.zhName }}
-                            <span v-if="item.enName">
-                                ({{ item.enName }})
-                            </span>
+                        <span class="item">
+                            作者: {{ concatWith(',', bookshelf.authors) }}
                         </span>
                         <span class="item">
                             出版社:

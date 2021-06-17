@@ -11,7 +11,7 @@
                 {{ data.title }}
             </div>
             <div class="author text-gray">
-                {{ concatWith('，', data.authors) }}
+                {{ concatWith(',', data.authors) }}
             </div>
             <div class="price text-red">¥{{ data.price }}</div>
         </div>

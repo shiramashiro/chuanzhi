@@ -12,22 +12,15 @@ export const utils = {
          *
          * @param {Object} character 拼接的字符
          * @param {Array} target 目标数组
-         * @param {string} prop 数组中的属性
          */
-        concatWith(character = '，', target, key = 1) {
+        concatWith(character = ',', target) {
             let concated = ''
-            if (target !== undefined) {
-                for (let i = 0; i < target.length; i++) {
-                    if (target.length === i + 1) {
-                        let values = Object.values(target[i])
-                        concated += values[key]
-                    } else {
-                        let values = Object.values(target[i])
-                        concated += values[key] + character
-                    }
+            for (let i = 0; i < target.length; i++) {
+                if (target.length === i + 1) {
+                    concated += target[i]
+                } else {
+                    concated += target[i] + character
                 }
-            } else {
-                throw ReferenceError(`参数不能为undefined`)
             }
             return concated
         },
