@@ -241,7 +241,8 @@ export const service = {
                         receivePhone: this.ruleForm.receivePhone,
                         receiveLocation: this.ruleForm.receiveLocation,
                         payWay: '线上支付',
-                        status: '正在运输'
+                        status: '正在处理',
+                        statusType: 'processing'
                     })
                     .then(res => {
                         this.trolley.splice(0, this.trolley.length)
