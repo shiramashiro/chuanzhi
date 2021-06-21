@@ -10,8 +10,9 @@
                     {{ press.profile }}
                 </div>
             </div>
-            <div class="books owl-margin-top-lg flex justify-between">
+            <div class="books owl-margin-top-lg flex">
                 <owl-book-verbose-fiche
+                    class="owl-full-he-wi"
                     v-for="(item, index) in bookshelfs"
                     :key="index"
                     :data="item"
@@ -50,5 +51,9 @@ export default {
 <style scoped>
 .press-wrap {
     margin: 1% 15%;
+}
+
+.books {
+    flex-wrap: wrap;
 }
 </style>

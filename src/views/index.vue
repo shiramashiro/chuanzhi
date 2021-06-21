@@ -34,7 +34,7 @@
                 <div class="col-2 owl-margin-le-lg">
                     <div class="content flex align-center justify-between">
                         <owl-book-fiche
-                            v-for="(item, index) in bookshelfs"
+                            v-for="(item, index) in hotBookshelfs"
                             :key="index"
                             :data="item"
                             :url="'/verbose/' + item.id"
@@ -62,7 +62,7 @@ export default {
         }
     },
     mounted() {
-        this.geBookshelfsByTypes('all')
+        this.getLiteratureByLimitAndSymbol(10, 'hot')
     }
 }
 </script>

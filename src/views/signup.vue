@@ -1,7 +1,7 @@
 <template>
     <div class="signup">
         <div>
-            <h2>新会员注册</h2>
+            <h2>新用户注册</h2>
         </div>
         <el-form
             class="form"

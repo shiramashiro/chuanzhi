@@ -18,7 +18,8 @@ export const service = {
             trolleyTotalPrice: 0,
             trolleyItemNum: 0,
             indents: [],
-            userId: ''
+            userId: '',
+            hotBookshelfs: []
         }
     },
     methods: {
@@ -35,6 +36,16 @@ export const service = {
             }
         },
 
+        getLiteratureByLimitAndSymbol(stint, symbol) {
+            this.$axios
+                .post('/get/literature/by/stint/and/symbol', {
+                    stint: stint,
+                    symbol: symbol
+                })
+                .then(res => {
+                    this.hotBookshelfs = res.data.data
+                })
+        },
         /**
          *
          * 通过书籍类型获取书籍。

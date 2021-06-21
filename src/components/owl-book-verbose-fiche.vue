@@ -5,7 +5,7 @@
         :class="[mode ? mode : '']"
     >
         <img class="preview" :src="data.previews[0]" />
-        <div class="info">
+        <div class="info owl-margin-le-lg">
             <div class="title text-cut" @click="$router.push(url)">
                 {{ data.title }}
             </div>
