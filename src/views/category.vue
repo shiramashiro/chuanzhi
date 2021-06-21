@@ -23,6 +23,11 @@ export default {
     data() {
         return {}
     },
+    watch: {
+        $route() {
+            this.geBookshelfsByTypes(this.$route.params.types)
+        }
+    },
     mounted() {
         this.geBookshelfsByTypes(this.$route.params.types)
     }

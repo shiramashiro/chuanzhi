@@ -11,30 +11,20 @@ body {
     background-color: white;
 }
 
-@font-face {
-    font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
-        'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
-}
-
 a {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 a:linked {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 a:visited {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 a:active {
-    text-decoration: none;
-}
-
-* {
-    font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
-        'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+    text-decoration: none !important;
 }
 
 /* 滚动条宽度 */

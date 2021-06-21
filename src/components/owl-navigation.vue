@@ -26,7 +26,7 @@
                         :key="index"
                         class="li"
                     >
-                        <a v-bind:href="item.href">
+                        <router-link v-bind:to="item.href">
                             <span class="span">
                                 <i
                                     v-bind:class="item.style"
@@ -34,7 +34,7 @@
                                 ></i>
                                 {{ item.label }}
                             </span>
-                        </a>
+                        </router-link>
                     </li>
                     <li class="li" v-if="userId === null">
                         <router-link to="/signin">
@@ -45,7 +45,7 @@
                     </li>
                     <el-dropdown v-if="userId !== null">
                         <li class="li">
-                            <router-link to="user">
+                            <router-link to="/user">
                                 <span class="span">
                                     <el-avatar
                                         :size="25"

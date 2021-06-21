@@ -2,9 +2,9 @@
     <div class="owl-category-bar">
         <ul class="ul">
             <li class="li" v-for="(item, index) in categories" :key="index">
-                <a v-bind:href="item.href">
+                <router-link v-bind:to="item.href">
                     {{ item.name }}
-                </a>
+                </router-link>
             </li>
         </ul>
     </div>

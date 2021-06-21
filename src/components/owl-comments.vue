@@ -51,9 +51,6 @@ export default {
             required: true
         }
     },
-    data() {
-        return {}
-    },
     methods: {
         handleClick(id, index, type) {}
     }
@@ -62,6 +59,10 @@ export default {
 
 <style scoped>
 .col-1 {
-    width: 150px;
+    width: 17%;
+}
+
+.col-2 {
+    width: 83%;
 }
 </style>

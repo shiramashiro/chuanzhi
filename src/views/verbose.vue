@@ -27,9 +27,7 @@
                         </span>
                         <span class="item">
                             出版社:
-                            <el-link
-                                v-bind:href="'/press/' + bookshelf.pressId"
-                            >
+                            <el-link @click="router(bookshelf.pressId)">
                                 {{ bookshelf.press }}
                             </el-link>
                         </span>
@@ -246,6 +244,9 @@ export default {
         }
     },
     methods: {
+        router(param) {
+            this.$router.push('/press/' + param)
+        },
         collect() {
             this.setCollectBookshelf(this.bookshelf)
         },
