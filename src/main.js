@@ -11,7 +11,7 @@ import './static/css/global.css'
 // 导入element-ui组件库
 import Element, { Message, MessageBox } from 'element-ui'
 
-axios.defaults.baseURL = 'http://1.116.123.44:9000/api/v1'
+axios.defaults.baseURL = 'http://localhost:9000/api/v1'
 axios.interceptors.request.use(
     function(config) {
         return config

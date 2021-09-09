@@ -4,7 +4,7 @@
             <div class="left">
                 <router-link to="/">
                     <img
-                        src="https://owl-town.oss-cn-chengdu.aliyuncs.com/img/logo/logo.png"
+                        src="https://generic-data.oss-cn-chengdu.aliyuncs.com/owl/img/logo.png"
                     />
                 </router-link>
             </div>

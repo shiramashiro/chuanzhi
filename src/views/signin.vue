@@ -6,7 +6,7 @@
         <div class="wrapper">
             <div class="img-container">
                 <img
-                    src="https://owl-town.oss-cn-chengdu.aliyuncs.com/img/bg-signin.jpg"
+                    src="https://generic-data.oss-cn-chengdu.aliyuncs.com/owl/img/signin-bg.jpg"
                 />
             </div>
             <div class="form-container">

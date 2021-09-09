@@ -31,7 +31,7 @@
         <div class="row-2">
             <img
                 style="width: 100px; height: 30px"
-                src="https://owl-town.oss-cn-chengdu.aliyuncs.com/img/logo/logo.png"
+                src="https://generic-data.oss-cn-chengdu.aliyuncs.com/owl/img/logo.png"
             />
             <div class="copyright">
                 Copyright © 2020-2021 郑人滏. 保留代码权利<br />
